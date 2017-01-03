@@ -1,0 +1,229 @@
+<apex:page standardController="signature__Signature__c" id="pg" extensions="signature.EmailSignature" title="Simple Signature"  docType="html-5.0" tabStyle="Sign__tab" standardStylesheets="true" showHeader="false" sidebar="false">
+    <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <head>
+            <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
+
+          <meta name="apple-mobile-web-app-capable" content="yes"/>
+          <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+            <script type="text/javascript">
+                var __sfdcSessionId = '{!GETSESSIONID()}';
+            </script>
+            <!--<script src="{!URLFOR($Resource.SignaturePad,'jquery.google.min.js')}"></script>-->
+            <apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"/>
+            <!--<apex:stylesheet value="{!URLFOR($Resource.SignaturePad,'/assets/jquery.signaturepad.css')}"/>-->
+            <apex:stylesheet value="{!URLFOR($Resource.signature__SignPad,'signature_pad-1.5.3/example/css/signature-pad.css')}"/>
+            <apex:stylesheet value="{!URLFOR($Resource.signature__SLDS105, 'assets/styles/salesforce-lightning-design-system-vf.css')}" />
+             
+            <script src="/soap/ajax/35.0/connection.js" type="text/javascript"></script>
+            
+            <!--<script src="{!URLFOR($Resource.SignaturePad,'jquery.signaturepad.js')}"></script>-->
+            
+            <script>
+                $(document).ready(function() {
+                    //$('.sigPad').signaturePad();
+                    //document.getElementById("drawit").click();
+                    //document.getElementsByClassName("output")[0].value='[{"lx":111,"ly":33,"mx":111,"my":32},{"lx":111,"ly":33,"mx":111,"my":33},{"lx":217,"ly":49,"mx":217,"my":48},{"lx":217,"ly":49,"mx":217,"my":49},{"lx":193,"ly":33,"mx":193,"my":32},{"lx":193,"ly":33,"mx":193,"my":33},{"lx":156,"ly":20,"mx":156,"my":19},{"lx":156,"ly":20,"mx":156,"my":20},{"lx":156,"ly":39,"mx":156,"my":38},{"lx":156,"ly":39,"mx":156,"my":39},{"lx":157,"ly":38,"mx":156,"my":39},{"lx":158,"ly":38,"mx":157,"my":38},{"lx":159,"ly":39,"mx":158,"my":38},{"lx":160,"ly":39,"mx":159,"my":39},{"lx":160,"ly":40,"mx":160,"my":39},{"lx":162,"ly":41,"mx":160,"my":40},{"lx":162,"ly":43,"mx":162,"my":41},{"lx":163,"ly":44,"mx":162,"my":43},{"lx":164,"ly":45,"mx":163,"my":44},{"lx":164,"ly":47,"mx":164,"my":45},{"lx":164,"ly":48,"mx":164,"my":47},{"lx":165,"ly":49,"mx":164,"my":48},{"lx":165,"ly":51,"mx":165,"my":49},{"lx":165,"ly":53,"mx":165,"my":51},{"lx":165,"ly":54,"mx":165,"my":53},{"lx":165,"ly":55,"mx":165,"my":54},{"lx":165,"ly":56,"mx":165,"my":55},{"lx":164,"ly":56,"mx":165,"my":56},{"lx":163,"ly":56,"mx":164,"my":56},{"lx":161,"ly":56,"mx":163,"my":56},{"lx":159,"ly":56,"mx":161,"my":56},{"lx":157,"ly":55,"mx":159,"my":56},{"lx":156,"ly":54,"mx":157,"my":55},{"lx":155,"ly":54,"mx":156,"my":54},{"lx":154,"ly":52,"mx":155,"my":54},{"lx":153,"ly":52,"mx":154,"my":52},{"lx":153,"ly":51,"mx":153,"my":52},{"lx":152,"ly":49,"mx":153,"my":51},{"lx":151,"ly":49,"mx":152,"my":49},{"lx":151,"ly":47,"mx":151,"my":49},{"lx":151,"ly":46,"mx":151,"my":47},{"lx":151,"ly":45,"mx":151,"my":46},{"lx":151,"ly":44,"mx":151,"my":45},{"lx":153,"ly":43,"mx":151,"my":44},{"lx":156,"ly":43,"mx":153,"my":43},{"lx":159,"ly":43,"mx":156,"my":43},{"lx":161,"ly":43,"mx":159,"my":43},{"lx":162,"ly":43,"mx":161,"my":43},{"lx":163,"ly":43,"mx":162,"my":43},{"lx":164,"ly":43,"mx":163,"my":43},{"lx":164,"ly":44,"mx":164,"my":43},{"lx":165,"ly":45,"mx":164,"my":44},{"lx":166,"ly":45,"mx":165,"my":45},{"lx":166,"ly":46,"mx":166,"my":45},{"lx":166,"ly":48,"mx":166,"my":46},{"lx":166,"ly":49,"mx":166,"my":48},{"lx":166,"ly":50,"mx":166,"my":49},{"lx":164,"ly":51,"mx":166,"my":50},{"lx":159,"ly":52,"mx":164,"my":51},{"lx":154,"ly":52,"mx":159,"my":52},{"lx":150,"ly":52,"mx":154,"my":52},{"lx":147,"ly":52,"mx":150,"my":52},{"lx":144,"ly":52,"mx":147,"my":52},{"lx":143,"ly":52,"mx":144,"my":52},{"lx":142,"ly":52,"mx":143,"my":52},{"lx":141,"ly":51,"mx":142,"my":52},{"lx":143,"ly":50,"mx":141,"my":51},{"lx":153,"ly":48,"mx":143,"my":50},{"lx":163,"ly":48,"mx":153,"my":48},{"lx":175,"ly":48,"mx":163,"my":48},{"lx":190,"ly":49,"mx":175,"my":48},{"lx":203,"ly":54,"mx":190,"my":49},{"lx":214,"ly":59,"mx":203,"my":54},{"lx":218,"ly":63,"mx":214,"my":59},{"lx":223,"ly":68,"mx":218,"my":63},{"lx":226,"ly":73,"mx":223,"my":68},{"lx":228,"ly":77,"mx":226,"my":73},{"lx":229,"ly":80,"mx":228,"my":77},{"lx":230,"ly":85,"mx":229,"my":80},{"lx":230,"ly":87,"mx":230,"my":85},{"lx":230,"ly":88,"mx":230,"my":87},{"lx":230,"ly":89,"mx":230,"my":88},{"lx":229,"ly":90,"mx":230,"my":89},{"lx":225,"ly":92,"mx":229,"my":90},{"lx":218,"ly":93,"mx":225,"my":92},{"lx":214,"ly":93,"mx":218,"my":93},{"lx":209,"ly":93,"mx":214,"my":93},{"lx":207,"ly":92,"mx":209,"my":93},{"lx":205,"ly":91,"mx":207,"my":92},{"lx":204,"ly":89,"mx":205,"my":91},{"lx":203,"ly":87,"mx":204,"my":89},{"lx":203,"ly":82,"mx":203,"my":87},{"lx":203,"ly":79,"mx":203,"my":82},{"lx":203,"ly":76,"mx":203,"my":79},{"lx":208,"ly":73,"mx":203,"my":76},{"lx":217,"ly":69,"mx":208,"my":73},{"lx":225,"ly":67,"mx":217,"my":69},{"lx":233,"ly":66,"mx":225,"my":67},{"lx":240,"ly":66,"mx":233,"my":66},{"lx":248,"ly":66,"mx":240,"my":66},{"lx":253,"ly":66,"mx":248,"my":66},{"lx":257,"ly":67,"mx":253,"my":66},{"lx":258,"ly":69,"mx":257,"my":67},{"lx":260,"ly":70,"mx":258,"my":69},{"lx":260,"ly":72,"mx":260,"my":70},{"lx":260,"ly":74,"mx":260,"my":72},{"lx":260,"ly":76,"mx":260,"my":74},{"lx":260,"ly":78,"mx":260,"my":76},{"lx":259,"ly":79,"mx":260,"my":78},{"lx":255,"ly":81,"mx":259,"my":79},{"lx":251,"ly":81,"mx":255,"my":81},{"lx":245,"ly":81,"mx":251,"my":81},{"lx":241,"ly":81,"mx":245,"my":81},{"lx":239,"ly":81,"mx":241,"my":81},{"lx":238,"ly":81,"mx":239,"my":81},{"lx":236,"ly":80,"mx":238,"my":81},{"lx":236,"ly":79,"mx":236,"my":80},{"lx":236,"ly":77,"mx":236,"my":79},{"lx":236,"ly":74,"mx":236,"my":77},{"lx":237,"ly":72,"mx":236,"my":74},{"lx":240,"ly":70,"mx":237,"my":72},{"lx":247,"ly":67,"mx":240,"my":70},{"lx":255,"ly":65,"mx":247,"my":67},{"lx":265,"ly":65,"mx":255,"my":65},{"lx":270,"ly":65,"mx":265,"my":65},{"lx":274,"ly":65,"mx":270,"my":65},{"lx":277,"ly":65,"mx":274,"my":65},{"lx":278,"ly":65,"mx":277,"my":65},{"lx":280,"ly":65,"mx":278,"my":65},{"lx":281,"ly":65,"mx":280,"my":65}]';
+                    
+                });
+            </script>
+            
+            <script>
+                   var parentRecordId ='{!JSENCODE(parentId)}';
+                   if(parentRecordId=='' || parentRecordId==null){
+                       parentRecordId='noid';
+                   }  
+                   var backtoparent =  '{!JSENCODE($CurrentPage.parameters.backtoparent)}';   
+                   console.log('backtoparent '+backtoparent);
+                function uploadFile(parentId)
+                    {
+                        var canvas = document.getElementById("padd");
+                        
+                        var context = canvas.getContext("2d");
+                        var mouseButton = 0;
+                        var lastX = lastY = null;
+                        var image = canvas.toDataURL().split(',')[1];
+                        
+                        var legaltext='';
+                        
+                        var fields = [<apex:repeat value="{!$ObjectType.signature__Signature__c.fieldsets.signature__SignatureFields}" var="fieldValue" id="fset">
+                            '{!fieldValue}'+':'+$('.'+'{!fieldValue}').val(),
+                            </apex:repeat>
+                        ];
+                        
+                        //var result = signature.SignatureController.saveFile('{!Signature__c.Id}',image,signName,signName2,city,state,Dte,Dte2,legaltext,parentRecordId,handleResult);
+                        //alert('id--'+parentRecordId);
+                        var result =  signature.EmailSignature.saveFile1('{!Signature__c.Id}',image,fields,legaltext,parentRecordId,handleResult);   
+                    }
+                    function handleResult(result,event) {
+                        if(result == null){
+                           // $('#msg').show();
+                           // $('html,body').scrollTop(0);
+                        }
+                        if(result.success) {
+                            refresh();
+                        } else {
+                            //alert('Error: '+result.errorMessage);
+                            var s = result.errorMessage;
+                            var rx = s.match(/\[(.*?)\]/);
+                           //var arr = rx.exec(s);
+                            //alert(rx[0]+'---'+rx[1]);  
+                            $('.msg').html("");
+                            $('#msg'+rx[1]).html("Incorrect date. Please review and resubmit.");
+                        }
+                    }
+                    
+                    function show(f){
+                        //alert(f);
+                        if(f == 'signature__Name__c' || f == 'signature__City__c'){
+                            //alert(f);
+                            //j$
+                           showButton();
+                        }
+                   }
+                        
+            </script>
+            <!--<script src="{!URLFOR($Resource.SignaturePad,'/assets/json2.min.js')}"></script>-->
+            
+        </head>
+          
+        <body>
+            <div class="slds" style="background-color:white">
+                <div class="slds-page-header" role="banner">
+                    <div class="slds-grid">
+                      <b>  {!$Label.Page_Title} </b>
+                    </div>
+                </div><br/>
+            
+                <apex:form id="frm"> 
+                    <apex:pageMessages />
+                    <!--<apex:inputHidden value="{!$ObjectType.signature__Signature__c.fieldsets.signature__SignatureFields}" id="fset"/>-->
+                    <apex:actionFunction Name="showButton" reRender="btnId" />
+                    <apex:actionFunction Name="refresh" action="{!refresh}" rerender="pg"/>
+                     <apex:actionFunction Name="updateClicked" action="{!updateClicked}" rerender=""/>
+                    
+                        <table style="margin-left:2%;width:97%;display:{!IF((errorMsg == null || errorMsg == '') && signAccepted == 'false', '','none')}">
+                            <tr><td colspan="2">{!$Label.Long_Legal_Text_1} {!$Label.Long_Legal_Text_2}</td></tr>
+                            <tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+                            
+                            <apex:repeat value="{!$ObjectType.signature__Signature__c.fieldsets.signature__SignatureFields}" var="fieldValue" id="fset">
+                            <tr>
+                                <td><apex:outputLabel rendered="{!fieldValue.label != 'Name 2'}">{!fieldValue.label}:</apex:outputLabel>
+                                    <apex:outputLabel rendered="{!fieldValue.label == 'Name 2'}">Last Name:</apex:outputLabel>  
+                                </td>
+                            <td>
+                                <apex:inputField value="{!signVF[fieldValue]}" styleClass="{!IF(fieldValue.type =='boolean',''+fieldValue,'slds-input'+' '+fieldValue)}"  html-placeholder="{!if(fieldValue.type =='date','mm/dd/yyyy',fieldValue.label)}" onchange="show('{!fieldValue}');" rendered="{!fieldValue.type != 'date' && fieldValue.type != 'datetime'}"/>
+                                <apex:input type="date" value="{!dat}" styleClass="slds-input {!fieldValue}" rendered="{!fieldValue == 'signature__Date__c'}"/> 
+                                <div id="msg{!fieldValue}" style="color:red;" class="msg"></div>
+                                <apex:input type="date" value="{!dat1}" styleClass="slds-input {!fieldValue}" rendered="{!fieldValue == 'signature__Date_2__c'}"/>
+                                <div id="msg{!fieldValue}" style="color:red;" class="msg"></div>
+                            </td>
+                             
+                            </tr>
+                            <tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+                            </apex:repeat>
+                            
+                        </table> 
+
+                </apex:form>
+                
+                <apex:form styleclass="sigPad" id="signfrm" style="display:{!IF((errorMsg == null || errorMsg == '') && signAccepted == 'false', '','none')}" >
+                  
+                    <div id="signature-pad" class="m-signature-pad">
+                        <div class="m-signature-pad--body">
+                          <canvas id="padd" style="height:160px;"></canvas>
+                          <!--<input type="hidden" name="output" class="output"/>-->
+                        </div>
+                       <div class="m-signature-pad--footer">
+                          <div class="description">Sign above</div>
+                          <button id="btn" style="width: 59px;height:28px;background: none;background-color: gainsboro;top:24px" class="button clear " onclick="signaturePad.clear();return false;">Clear</button>
+                          
+                        </div> 
+                    </div>
+                      <script src="{!URLFOR($Resource.SignPad,'signature_pad-1.5.3/example/js/signature_pad.js')}"/>
+                     <script src="{!URLFOR($Resource.SignPad,'signature_pad-1.5.3/example/js/app.js')}"/>
+                     
+                  
+               </apex:form>
+            
+               <!-- <form class="sigPad" id="signfrm" style="margin-top:-35px; display:{!IF((errorMsg == null || errorMsg == '') && signAccepted == 'false', '','none')}" >
+                    <label for="name" style="font-weight:bold;visibility:hidden;">Print your name</label>
+                    <input type="text" name="name" id="name" class="name" style="visibility:hidden;" /><br/>
+                    
+                    <ul class="sigNav">
+                        <li class="drawIt" ><a href="#draw-it" id="drawit" >Signature</a></li>
+                        <li class="typeIt" style="visibility:hidden;" ><a href="#type-it" class="current">Type It</a></li>
+                        
+                        <li class="clearButton"><a href="#clear">Clear</a></li>
+                        
+                    </ul>
+                    <div class="sig sigWrapper" style="height:160px;">
+                        <div class="typed" id="typed" style="visibility:hidden;" ></div>
+                        <canvas class="pad"   id="padd" style="border:2px #666 solid;height:160px;"></canvas>
+                        <input type="hidden" name="output" class="output"/>
+                    </div>
+                 <script>
+                     var legalte =  "{!$Label.Legal_Text}"
+                 </script>   
+                </form>-->
+                
+                <apex:outputPanel id="btnId" style="display:{!IF((errorMsg == null || errorMsg == '') && signAccepted == 'false', '','none')}">
+                    <apex:form >
+                        <div style="height:60px;"/>
+                       <center> 
+                           <apex:commandButton id="btn" value="{!$Label.signature__Submit_Button}" onclick="uploadFile('tedt');return false;" disabled="{!ISBLANK(SignVf.signature__Name__c)}" styleClass="slds-button slds-button--neutral"/>
+                        </center>
+                        <br/><br/>
+                        
+                    </apex:form>
+                </apex:outputPanel>
+                <apex:outputPanel id="btnId1" style="display:{!IF((errorMsg == null || errorMsg == '') && signAccepted == 'true', '','none')}">
+                    <apex:form >
+                        <center> 
+                           <apex:outputText id="btn" value="Signature Accepted" styleClass="slds-button " /><br/><br/>
+                           <apex:outputText value="You may close this page" /> 
+                        </center>
+                        <div style="height:500px;"/>
+                    </apex:form>
+                </apex:outputPanel>
+            </div>   
+        </body>
+    </html>
+    <script>
+    updateClicked();
+       function setDate(currentValue){
+           //if(f == 'signature__Date__c' || f == 'signature__Date_2__c'){                            
+                if(currentValue!=''){
+                    var dateArray = currentValue.split('/');
+                    $('.'+f).val(dateArray[1]+'-'+dateArray[2]+'-'+dateArray[0]);
+                    document.getElementById('pg:frm:datehidden').value=dateArray[1]+'/'+dateArray[2]+'/'+dateArray[0];
+                }
+                else
+                   document.getElementById('pg:frm:datehidden').value='[DATE]';
+                showButton();
+          // }
+                  
+       }                     
+    </script>
+    <style>
+        .hasDatepicker {
+            position: relative;
+            z-index: 100000;
+        }
+        
+        .m-signature-pad{
+                height: 200px;
+                margin-top: 50px;
+                position: relative ;
+               // margin-left: -543px;
+               // width: 80%;
+        }
+        .m-signature-pad--body{
+                height: 160px;
+                top: -1px;
+                //margin-top: 50px;
+                //position: static;
+               // margin-left: -543px;
+                //width: 100%;
+        }
+    </style>
+</apex:page>

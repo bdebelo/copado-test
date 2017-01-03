@@ -1,0 +1,43 @@
+<apex:page controller="AutoCompleteController">
+
+
+  <script src="https://code.jquery.com/jquery-1.8.2.js"></script>
+
+
+<script src="https://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
+
+
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css"/>
+
+
+ <script type="text/javascript"> 
+    var j$ = jQuery.noConflict();
+    var apexAccountList =[];
+       <apex:repeat value="{!accountList}" var="accList">            
+          apexAccountList.push('{!accList.name}');            
+      </apex:repeat>
+
+      j$(document).ready(function(){
+      j$(".apexaccountautocomplete").autocomplete({
+          source : apexAccountList
+   });  
+    j$("#button").click(function(){
+      alert('somevalue');
+      alert(obj);
+      });   
+
+  });   
+
+
+</script>
+<apex:form id="form">
+  <b>Account(This uses the Apex class to display the list)</b>
+  <apex:inputText styleClass="apexaccountautocomplete" value="{!selectedAccout}"/>
+  <br/><br/>
+  <apex:outputPanel id="panel">
+     <b> user select value is =      {!selectedAccout}  </b>
+     <br/>
+     <apex:commandButton action="{!setInputvalue}" value="Submit" reRender="panel"/>
+  </apex:outputPanel>
+   </apex:form>
+</apex:page>

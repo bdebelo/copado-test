@@ -1,0 +1,106 @@
+<apex:page showHeader="false" sidebar="false" controller="TestPageController" standardStylesheets="false">
+  <head>
+    <title>Test Page</title>
+    <c:Header id="pageHeader" />
+
+    <script>
+          
+    </script>
+    <style>
+    	md-input-container .md-input
+        {
+        	display: -webkit-inline-box;
+        }  
+    </style>  
+  </head>
+  <body ng-app="eecApp">
+      <c:Nav_Bar id="navBar" />
+      <div class="container">
+      
+      <apex:form id="LicenseStatusForm" html-flex="100" html-flex-lg="74" html-flex-gt-lg="74">
+		<apex:outputPanel style="padding:50px 50px 50px 50px" id="userDetail" styleClass="ng-cloak">
+  
+         <h3 class="md-display-1">License Status and Capacity Info</h3>
+         <md-divider layout-align="center center"></md-divider>
+          
+          
+         <div class="transaction-info" layout-margin="true">
+              <h3 class="eec-subhead">Transaction Information</h3>
+              <md-content class="transaction-info-row" layout="row">
+                <p class="md-subhead top-level-label">Transaction Type: </p>
+                <apex:outputText value="Renewal" />
+              </md-content>
+              <md-content class="transaction-info-row" layout="row">
+                <p class="md-subhead top-level-label">Transaction Number: </p>
+                <apex:outputText value="00071" />
+              </md-content>
+         </div>
+          <md-content layout="row" layout-wrap="true">
+              <md-input-container flex="50">
+                  <p>Are any of your children home schooled?</p>
+                        <apex:selectRadio value="{!cData.Drinker__c}" required="true">
+							<apex:selectOption itemLabel="Yes" itemValue="Yes" ></apex:selectOption>
+                            <apex:selectOption itemLabel="No" itemValue="No" html-ng-model="drink_selection"></apex:selectOption>
+              			</apex:selectRadio> 
+               <div ng-show="drink_selection == 'Yes'"> 
+              		<label class="input-label">Please describe</label>
+              		<apex:InputField value="{!cData.DataContent__c}" required="true"/> 
+			  </div> 
+              </md-input-container>
+              <md-input-container flex="50">
+                  <p>Are you an approved foster care provider? </p>
+                        <apex:selectRadio value="{!cData.Drinker__c}" required="true">
+                            <apex:selectOption itemLabel="Yes" itemValue="Yes" ></apex:selectOption>
+                            <apex:selectOption itemLabel="No" itemValue="No" html-ng-model="drink_selection"></apex:selectOption>
+              			</apex:selectRadio> 
+               <div ng-show="drink_selection == 'Yes'">
+              		<label class="input-label">Please describe</label>
+              		<apex:InputField value="{!cData.DataContent__c}" required="true"/> 
+			  </div>             
+              </md-input-container>
+          </md-content>
+          <md-content layout="row" layout-wrap="true">
+              <md-input-container flex="50">
+                  <p>Are you in the process of becoming a foster care provider?</p>
+                        <apex:selectRadio value="{!cData.Drinker__c}" required="true">
+							<apex:selectOption itemLabel="Yes" itemValue="Yes" html-ng-model="drink_selection"></apex:selectOption>
+                            <apex:selectOption itemLabel="No" itemValue="No" html-ng-model="drink_selection"></apex:selectOption>
+              			</apex:selectRadio> 
+               <div ng-show="drink_selection == 'Yes'"> 
+              		<label class="input-label">Please describe</label>
+              		<apex:inputTextarea value="{!cData.DataContent__c}" required="true"/> 
+			  </div>             
+              </md-input-container>
+              <md-input-container flex="50">
+                  <p>Is there any other business being operated out of your home? </p>
+                        <apex:selectRadio value="{!cData.Somker__c}" required="true">
+							<apex:selectOption itemLabel="Yes" itemValue="Yes" html-ng-model="drink_selection"></apex:selectOption>
+                            <apex:selectOption itemLabel="No" itemValue="No" html-ng-model="drink_selection"></apex:selectOption>
+              			</apex:selectRadio> 
+               <div ng-show="somker_selection == 'Yes'">
+              		<label class="input-label">Please describe</label>
+              		<apex:inputTextarea value="{!cData.DataContent__c}" html-ng-show="somker_selection == 'Yes'" required="true"/> 
+			   </div>             
+              </md-input-container>
+          </md-content>
+          <md-content layout="row" layout-wrap="true">
+              <md-input-container flex="50">
+                  <p>Are you currently working with a Family Child Care System?</p>
+                        <apex:selectRadio value="{!cData.Drinker__c}" required="true">
+							<apex:selectOption itemLabel="Yes" itemValue="Yes" html-ng-model="drink_selection"></apex:selectOption>
+                            <apex:selectOption itemLabel="No" itemValue="No" html-ng-model="drink_selection"></apex:selectOption>
+              			</apex:selectRadio> 
+              		<div ng-show="drink_selection == 'Yes'"> 
+              			<label class="input-label">Please describe</label>
+              			<apex:inputTextarea value="{!cData.DataContent__c}" required="true"/> 
+			  		</div>             
+              </md-input-container>
+          </md-content>
+          </apex:outputPanel>
+        </apex:form>
+      </div>
+      <c:Site_Footer id="siteFooter" />   
+      
+      
+ </body>
+</apex:page>

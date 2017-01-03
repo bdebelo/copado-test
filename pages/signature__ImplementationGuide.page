@@ -1,0 +1,40 @@
+<apex:page title="Implementation Guide" applyBodyTag="false" docType="html-5.0">
+    
+    <html>
+        <head>
+            <style>
+                .bPageFooter{
+                    /*display:none!important;*/
+                }
+                .oRight{ /*display:none!important;*/}
+            </style>
+            <script type="text/javascript">
+                var __sfdcSessionId = '{!GETSESSIONID()}';
+            </script>
+            <script src="../../soap/ajax/33.0/connection.js" type="text/javascript"></script>
+            <script src="../../soap/ajax/33.0/apex.js" type="text/javascript"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"/>
+            
+            <script>
+                
+                $(document).ready(function(){
+                   var recordtypeid;
+                   try{
+                        var curRecords = sforce.connection.query("Select Name, Id from Document where name='ImplementationGuide20'");
+                        var curRec = curRecords.getArray("records")[0];
+                        recordtypeid = curRec.Id; 
+                    }catch(err){
+                       
+                    }
+                   $('<iframe id="myFrame" width="100%" height="700" name="myFrame" src="/servlet/servlet.FileDownload?file='+recordtypeid+'" style="">').appendTo('#div');
+                       
+                });
+                
+                
+            </script>
+        </head>
+        <body>
+            <div id="div"></div>
+        </body>
+    </html>
+</apex:page>

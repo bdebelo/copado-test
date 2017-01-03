@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- City --></label>
+        <name>signature__City__c</name>
+    </fields>
+    <fields>
+        <label><!-- Clicked --></label>
+        <name>signature__Clicked__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact --></label>
+        <name>signature__Contact__c</name>
+        <relationshipLabel><!-- Signatures --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Date of Birth --></label>
+        <name>signature__Date_2__c</name>
+    </fields>
+    <fields>
+        <label><!-- Date --></label>
+        <name>signature__Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Emailed --></label>
+        <name>signature__Emailed__c</name>
+    </fields>
+    <fields>
+        <label><!-- Full Name --></label>
+        <name>signature__Full_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Lead --></label>
+        <name>signature__Lead__c</name>
+        <relationshipLabel><!-- Signatures --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Legal Text --></label>
+        <name>signature__Legal_Text__c</name>
+    </fields>
+    <fields>
+        <label><!-- Name 2 --></label>
+        <name>signature__Name_2__c</name>
+    </fields>
+    <fields>
+        <label><!-- First Name --></label>
+        <name>signature__Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Requested --></label>
+        <name>signature__Requested__c</name>
+    </fields>
+    <fields>
+        <label><!-- Signed --></label>
+        <name>signature__Signed__c</name>
+    </fields>
+    <fields>
+        <label><!-- State --></label>
+        <name>signature__State__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>signature__Status__c</name>
+        <picklistValues>
+            <masterLabel>Clicked</masterLabel>
+            <translation><!-- Clicked --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Emailed</masterLabel>
+            <translation><!-- Emailed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Requested</masterLabel>
+            <translation><!-- Requested --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Signed</masterLabel>
+            <translation><!-- Signed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Viewed</masterLabel>
+            <translation><!-- Viewed --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Verify --></label>
+        <name>signature__Verify__c</name>
+    </fields>
+    <fields>
+        <label><!-- Viewed --></label>
+        <name>signature__Viewed__c</name>
+    </fields>
+    <webLinks>
+        <label><!-- Print --></label>
+        <name>signature__Print</name>
+    </webLinks>
+</CustomObjectTranslation>

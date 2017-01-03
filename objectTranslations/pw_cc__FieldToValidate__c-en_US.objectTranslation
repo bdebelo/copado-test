@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- Only Listed Countries --></label>
+        <name>pw_cc__AllowOnlyListedCountries__c</name>
+    </fields>
+    <fields>
+        <label><!-- Associated State Field Name --></label>
+        <name>pw_cc__AssociatedStateFieldName__c</name>
+    </fields>
+    <fields>
+        <label><!-- Country Field Name --></label>
+        <name>pw_cc__CountryFieldName__c</name>
+    </fields>
+    <fields>
+        <label><!-- Country Relationship Field --></label>
+        <name>pw_cc__CountryRelationshipField__c</name>
+    </fields>
+    <fields>
+        <label><!-- Country Mandatory --></label>
+        <name>pw_cc__IsCountryMandatory__c</name>
+    </fields>
+    <fields>
+        <label><!-- Object Name --></label>
+        <name>pw_cc__ObjectName__c</name>
+    </fields>
+    <fields>
+        <label><!-- Standardization --></label>
+        <name>pw_cc__Standardize__c</name>
+    </fields>
+</CustomObjectTranslation>

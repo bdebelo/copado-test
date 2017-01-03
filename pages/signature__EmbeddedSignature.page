@@ -1,0 +1,101 @@
+<apex:page standardController="signature__Signature__c" extensions="signature.EmbeddedSignatureController" showHeader="false" applyBodyTag="false" applyHtmlTag="false" standardStylesheets="false">
+   
+    <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <apex:outputText value="{!signature__Signature__c.signature__Status__c}" rendered="false"/>
+
+        <head>
+            <apex:stylesheet value="{!URLFOR($Resource.signature__SLDS105, 'assets/styles/salesforce-lightning-design-system-vf.css')}" />
+        </head> 
+        <apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"/>   
+        <script>
+             $(document).ready(function() {
+                 var status = '{!JSENCODE(signature__c.status__c)}';
+                 $('.'+'{!JSENCODE(signature__c.status__c)}').addClass('slds-is-active');
+                 $('.'+'{!JSENCODE(signature__c.status__c)}').prevAll().addClass('slds-is-active');
+                 if(status == 'Emailed')
+                     $('.slds-wizard__progress-bar').css("width","25%");
+                 else if(status == 'Viewed')
+                     $('.slds-wizard__progress-bar').css("width","50%");
+                 else if(status == 'Clicked')
+                     $('.slds-wizard__progress-bar').css("width","75%");
+                 else if(status == 'Signed')
+                     $('.slds-wizard__progress-bar').css("width","100%");
+             });
+        </script>
+       <body>
+           
+            <div class="slds">
+                
+                <center > 
+                <div class="slds-wizard" role="navigation" style="width:80%">
+                      <ol class="slds-wizard__list"><li class="slds-wizard__item Requested" >
+                          <div class="slds-wizard__link">
+                            <span class="slds-wizard__marker"></span>
+                            <span class="slds-wizard__label slds-text-title--caps slds-truncate" >Requested<br /><small><apex:outputField value="{!signature__Signature__c.signature__Requested__c}" /></small></span>
+                          </div>
+                        </li>
+                        
+                        <li class="slds-wizard__item Emailed">
+                          <div class="slds-wizard__link">
+                            <span class="slds-wizard__marker"></span>
+                            <span class="slds-wizard__label slds-text-title--caps slds-truncate" >Emailed<br /><small><apex:outputField value="{!signature__Signature__c.signature__Emailed__c}" /></small></span>
+                          </div>
+                        </li>
+                        <li class="slds-wizard__item Viewed">
+                          <div class="slds-wizard__link">
+                            <span class="slds-wizard__marker"></span>
+                            <span class="slds-wizard__label slds-text-title--caps slds-truncate" >Viewed<br /><small><apex:outputField value="{!signature__Signature__c.signature__Viewed__c}" /></small></span>
+                          </div>
+                        </li>
+                        <li class="slds-wizard__item Clicked">
+                          <div class="slds-wizard__link">
+                            <span class="slds-wizard__marker"></span>
+                            <span class="slds-wizard__label slds-text-title--caps slds-truncate" >Clicked<br /><small><apex:outputField value="{!signature__Signature__c.signature__Clicked__c}" /></small></span>
+                          </div>
+                        </li>
+                        <li class="slds-wizard__item Signed">
+                          <div class="slds-wizard__link">
+                            <span class="slds-wizard__marker"></span>
+                            <span class="slds-wizard__label slds-text-title--caps slds-truncate" >Signed<br /><small><apex:outputField value="{!signature__Signature__c.signature__Signed__c}" /></small></span>
+                          </div>
+                        </li>
+                        </ol>
+                </div>
+                  <span class="slds-wizard__progress" style="top: 12;width: 78%;margin-left: 11%;">
+                    <span class="slds-wizard__progress-bar"></span>
+                  </span>
+                </center><br/>  
+                
+                <table width= "100%" style="display:{!IF(signature__c.status__c == 'Signed','','none')}">
+                    <tr>
+                        <th colspan="4">{!$Label.Page_Title}</th>
+                    </tr>
+                    <tr><td colspan="4">&nbsp;</td></tr>
+                    <tr>
+                        <td colspan="4">
+                            <apex:outputField value="{!signature__Signature__c.signature__Legal_Text__c}"/>
+                        </td>
+                    </tr>
+                    <tr><td colspan="4">&nbsp;</td></tr>
+                    <apex:repeat value="{!$ObjectType.signature__Signature__c.fieldsets.signature__SignatureFields}" var="fieldValue">
+                        <tr>
+                            <td width="20%">
+                                <apex:outputLabel rendered="{!fieldValue.label != 'Name 2'}">{!fieldValue.label}:</apex:outputLabel>
+                                <apex:outputLabel rendered="{!fieldValue.label == 'Name 2'}">Last Name:</apex:outputLabel> 
+                            </td>
+                            <td width="40%"><apex:outputField value="{!signature__Signature__c[fieldValue]}"/></td>
+                            <td>&nbsp;</td><td >&nbsp;</td>
+                        </tr>
+                    </apex:repeat>
+                    <tr><td colspan="4">&nbsp;</td></tr>
+                    <tr>
+                        <td colspan="4">
+                            <apex:image url="/servlet/servlet.FileDownload?file={!attachemntId}" />  <!-- width="250" style="max-width: 350px;max-height: 250px;" -->
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </body>
+       
+    </html>
+</apex:page>

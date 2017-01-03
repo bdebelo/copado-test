@@ -1,0 +1,189 @@
+<apex:page controller="signature.ContactUsController" applyBodyTag="false" docType="html-5.0" standardStylesheets="false">
+   <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+       <head>
+            <title>Contact Us</title>
+            <apex:stylesheet value="{!URLFOR($Resource.signature__SLDS080, 'assets/styles/salesforce-lightning-design-system-vf.css')}" />
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"/>
+            <style>
+                .heading{
+                    font-size: 15px;
+                    font-family: inherit;
+                    display: inline-flex;
+                }
+                .field{
+                    width: 400px;
+                    height: 40px;
+                    cursor: auto;
+                    padding: .5em .6em;
+                    display: inline-block;
+                    border: 1px solid #ccc;
+                    box-shadow: inset 0 1px 3px #ddd;
+                    border-radius: 4px;
+                    vertical-align: middle;
+                    -webkit-box-sizing: border-box;
+                    -moz-box-sizing: border-box;
+                    box-sizing: border-box;
+                }
+                .message1{
+                        width: 385px;
+                        height: 200px;
+                        margin: 0px 0px;
+                        background-color:#FFF;
+                }
+                .labelcss{
+                    padding-top:20px;
+                    font-weight:bold;
+                    min-width: 130px;
+                }
+            </style>
+            <script>
+                
+                var j$ = jQuery.noConflict();
+                j$(document).ready(function() {
+                    for( var i=0;i < doc.length;i++){
+                        if(doc[i].value == ratingNumber){doc[i].checked=true;}
+                    }
+                    if ( (typeof window.sforce != 'undefined') && (window.sforce!=null) ) {
+                        
+                        var ftr = document.getElementById('ftr');
+                        ftr.style.bottom ='0';
+                        ftr.style.right='0';
+                    }
+                    else{
+                        var ftr = document.getElementById('ftr');
+                        ftr.style.position ='absolute';
+                        ftr.style.bottom ='0';
+                        ftr.style.right='0';
+                        
+                    }
+                });
+                
+            </script>
+        </head>
+       <body>    
+            
+            <!-- REQUIRED SLDS WRAPPER -->
+            <div class="slds">
+                <div class="slds-page-header" role="banner">
+                    <div class="slds-grid">
+                        <div class="slds-col slds-has-flexi-truncate">
+                            <apex:sectionHeader title="" subtitle="Contact To A Finish"/>
+                            <apex:image url="{!$Resource.signature__TAFlogo}" style="position:absolute;top:10px;right:10px;"/>
+                            <div class="slds-grid">
+                            <div class="slds-grid slds-type-focus slds-no-space">
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+                <!-- added status when any action performed -->
+                <apex:outputpanel >
+                    <apex:actionstatus id="Status">
+                        <apex:facet name="start">
+                            <div class="waitingSearchDiv" id="el_loading" style="background-color: #fbfbfb;
+                                   height: 100%;opacity:0.65;width:100%;"> 
+                                <div class="waitingHolder" style="top: 40%; width: 500px;left:30%;position:fixed;height: 500px;">
+                                    <img class="waitingImage" src="{!URLFOR($resource.SLDS080,'/assets/images/spinners/slds_spinner_brand.gif')}" title="Please Wait..." />
+                                    <span class="waitingDescription">Please Wait...</span>
+                                </div>
+                            </div>
+                        </apex:facet>
+                    </apex:actionstatus>
+                </apex:outputpanel>
+                             
+                <div id="topMessage11" class="slds-notify slds-notify--alert slds-theme--alert-texture" role="alert" style="{!if(AND(pageMessage != null,pageMessage != ''),'','display:none;')}">
+                      <span class="slds-assistive-text">Info</span>
+                      <h2>
+                        <svg aria-hidden="true" class="slds-icon icon-text-email slds-icon--small slds-m-right--x-small">
+                          <use xlink:href="{!URLFOR($Resource.SLDS080,'/assets/icons/action-sprite/svg/symbols.svg#email')}"></use>
+                        </svg>
+                        <apex:outputPanel id="topMessage">
+                            <script>
+                                var kk = '{!JSENCODE(pageMessage)}';
+                                if(kk != '' && kk != 'null')
+                                    document.getElementById('topMessage11').style.display='';
+                                else
+                                    document.getElementById('topMessage11').style.display='none';
+                            </script>
+                            <apex:outputtext value="{!JSENCODE(pageMessage)}"/>
+                        </apex:outputPanel>
+                    </h2>
+                </div> 
+               <apex:form id="frm2">  
+                    <apex:actionFunction name="Send_The_Message" action="{!SendMail}" reRender="frm2,topMessage" status="Status"/>
+                    <div style="padding:10px;">
+                    
+                    </div>
+                    <div id='contact_form_holder'>  
+                        <form id='contact_form'>  
+                            
+                            <div class="heading" style="margin-top:10px;">  
+                                <label class="labelcss slds-form-element__label" for="Organization Name:" style="padding-left:10px;"> Organization Name:</label>
+                                <div style="padding:10px;"> <apex:inputText id="Oname" styleClass="field" html-placeholder="Organization Name" required="true" value="{!orgName}" /> </div>    
+                            </div>
+                            <br/>
+                            <div class="heading" style="margin-top:10px;">  
+                                <label class="labelcss  slds-form-element__label" for="Organization Id:" style="padding-left:10px;"> Organization Id:</label>   
+                                <div style="padding:10px;"> <apex:inputText id="Oid" html-placeholder="Organization Id" value="{!orgId}" disabled="true" styleClass="field"/> </div>
+                            </div>  
+                            <br/>
+                            <div class="heading" style="margin-top:10px;">  
+                                <label class="labelcss  slds-form-element__label" for="App:" style="padding-left:10px;"> App:</label>   
+                                <div style="padding:10px;"> <apex:inputText id="appname" html-placeholder="Organization Id" value="{!appName}" disabled="true" styleClass="field"/> </div>
+                            </div>  
+                            <br/>
+                            <div class="heading" style="margin-top:10px;">  
+                                <label class="labelcss slds-form-element__label" for="Contact Name:" style="padding-left:10px;"> Contact Name:</label>
+                                <div style="padding:10px;"> <apex:inputText id="Cname" html-placeholder="Contact Name" required="true" value="{!ContactName}" styleClass="field"/> </div>   
+                            </div>
+                            <br/>  
+                            <div class="heading" style="margin-top:10px;">  
+                                <label class="labelcss slds-form-element__label" for="Email:" style="padding-left:10px;"> Email:</label> 
+                                <div style="padding:10px;"> <apex:inputText id="email" html-placeholder="Email"  required="true" value="{!email}" styleClass="field"/> </div>  
+                            </div>  
+                            <br/>  
+                            <div class="heading" style="margin-top:10px;">  
+                                <label class="labelcss slds-form-element__label" for="Phone:" style="padding-left:10px;"> Phone:</label>  
+                                <div style="padding:10px;"> <apex:inputText id="phone" html-placeholder="Phone" value="{!phone}" styleClass="field"/> </div> 
+                            </div>  
+                            <br/>  
+                            <div class="heading" style="margin-top:10px;">  
+                                <label class="labelcss slds-form-element__label" for="Message:" style="padding-left:10px;"> Message:</label>  
+                                <div style="padding:10px;"> <apex:inputTextarea style="min-width: 400px;line-height: 21px !important;min-height:120px" id="message" html-placeholder="Message..." required="true" value="{!message}" styleClass="slds-input"/>  </div>
+                            </div>  
+                            <br/>  
+                            <div id='cf_submit_p'>  
+                                <div style="padding:10px;">
+                                <input style="width:38%;" type="button" value=" Send Message " onclick="Send_The_Message();" class="slds-button slds-button--neutral" />  </div>
+                            
+                            </div>  
+                          
+                        </form>  
+                    </div>
+                </apex:form>
+                <div style="height:60px;"></div>
+                <p align="right">
+                    <footer role="contentinfo" class="slds-p-around--large" id="ftr" style="padding:0px">
+                            <table width="100%" style="height:75px;">
+                                <tr>
+                                    
+                                    <td style="vertical-align:bottom;">
+                                        <div style="float: right;/*position: absolute;*/bottom: 4px;right: 0px;">
+                                                    <a href="https://www.facebook.com/toafinish" target="_blank"><apex:image url="{!URLFOR($Resource.signature__social_media_icons, '/social_media_icons/facebook.png')}" alt="ToAfinish Facebook Page"/></a>&nbsp;&nbsp;
+                                                    <a href="https://twitter.com/toafinish" target="_blank" ><apex:image url="{!URLFOR($Resource.signature__social_media_icons, '/social_media_icons/twitter.png')}" alt="ToAfinish Twitter Profile"/></a>&nbsp;&nbsp;
+                                                     <a href="https://www.linkedin.com/company/to-a-finish" target="_blank" ><apex:image url="{!URLFOR($Resource.signature__social_media_icons, '/social_media_icons/linkedin.png')}" alt="ToAfinish LinkedIn Profile"/></a>&nbsp;&nbsp;                     
+                                                     <a href="https://plus.google.com/+ToAFinishLLCAustin" target="_blank" ><apex:image url="{!URLFOR($Resource.signature__social_media_icons, '/social_media_icons/google.png')}" alt="ToAfinish Google Plus Page"/></a>&nbsp;&nbsp;
+                                                     <a href="https://github.com/ToAFinish" target="_blank" > <apex:image url="{!URLFOR($Resource.signature__social_media_icons, '/social_media_icons/github.png')}" alt="ToAfinish youtube Page"/></a>&nbsp;&nbsp;
+                                                     <a href="https://www.youtube.com/user/ToAFinish" target="_blank" ><apex:image url="{!URLFOR($Resource.signature__social_media_icons, '/social_media_icons/youtube.png')}" alt="ToAfinish github page"/></a>&nbsp;&nbsp;                     
+                                           <br/><div align="center">©2012-2016 To A Finish LLC.</div>            
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                       </footer>
+                   </p>
+            </div>
+        </body>
+    </html>    
+</apex:page>

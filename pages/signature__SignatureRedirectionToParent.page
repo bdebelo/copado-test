@@ -1,0 +1,10 @@
+<apex:page >
+    <script>
+       try{
+            sforce.one.navigateToURL('/apex/signature__Signature?parentid={!$CurrentPage.parameters.id}&backtoparent=1',true)
+        }
+        catch(err){
+             window.location='/apex/signature__Signature?parentid={!$CurrentPage.parameters.id}&backtoparent=1';
+        }
+    </script>
+</apex:page>

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- Address Status Field Id --></label>
+        <name>pw_cc__AddressStatusFieldId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Address Status Field --></label>
+        <name>pw_cc__AddressStatusField__c</name>
+    </fields>
+    <fields>
+        <label><!-- Only Listed Countries --></label>
+        <name>pw_cc__AllowOnlyListedCountries__c</name>
+    </fields>
+    <fields>
+        <label><!-- City Field Id --></label>
+        <name>pw_cc__CityFieldId__c</name>
+    </fields>
+    <fields>
+        <label><!-- City Field --></label>
+        <name>pw_cc__CityField__c</name>
+    </fields>
+    <fields>
+        <label><!-- Country Field Id --></label>
+        <name>pw_cc__CountryFieldId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Country Field --></label>
+        <name>pw_cc__CountryField__c</name>
+    </fields>
+    <fields>
+        <label><!-- CountryRelationshipField --></label>
+        <name>pw_cc__CountryRelationshipField__c</name>
+    </fields>
+    <fields>
+        <help><!-- When enabled, geolocation fields (latitude and longitude) are shown in address edit mode. --></help>
+        <label><!-- Enable geolocation --></label>
+        <name>pw_cc__EnableGeolocation__c</name>
+    </fields>
+    <fields>
+        <help><!-- When enabled additional rules are applied which force certain address parts always to the second street line.  This setting can help to keep addresses well formatted when line lengths are limited --></help>
+        <label><!-- Force street address to multi-line --></label>
+        <name>pw_cc__ForceMultiLine__c</name>
+    </fields>
+    <fields>
+        <label><!-- HasOwnerField --></label>
+        <name>pw_cc__HasOwnerField__c</name>
+    </fields>
+    <fields>
+        <label><!-- Country is Mandatory --></label>
+        <name>pw_cc__IsCountryMandatory__c</name>
+    </fields>
+    <fields>
+        <label><!-- Latitude Relationship Field --></label>
+        <name>pw_cc__LatitudeRelationshipField__c</name>
+    </fields>
+    <fields>
+        <label><!-- Location Latitude Field Id --></label>
+        <name>pw_cc__LocationLatitudeFieldId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Location Latitude Field --></label>
+        <name>pw_cc__LocationLatitudeField__c</name>
+    </fields>
+    <fields>
+        <label><!-- Location Longitude Field Id --></label>
+        <name>pw_cc__LocationLongitudeFieldId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Location Longitude Field --></label>
+        <name>pw_cc__LocationLongitudeField__c</name>
+    </fields>
+    <fields>
+        <label><!-- Longitude Relationship Field --></label>
+        <name>pw_cc__LongitudeRelationshipField__c</name>
+    </fields>
+    <fields>
+        <label><!-- Object Name --></label>
+        <name>pw_cc__Object__c</name>
+    </fields>
+    <fields>
+        <label><!-- Record Type Name --></label>
+        <name>pw_cc__RecordType__c</name>
+    </fields>
+    <fields>
+        <label><!-- Standardize --></label>
+        <name>pw_cc__Standardize__c</name>
+    </fields>
+    <fields>
+        <label><!-- State Field Id --></label>
+        <name>pw_cc__StateFieldId__c</name>
+    </fields>
+    <fields>
+        <label><!-- State Field --></label>
+        <name>pw_cc__StateField__c</name>
+    </fields>
+    <fields>
+        <label><!-- StateRelationshipField --></label>
+        <name>pw_cc__StateRelationshipField__c</name>
+    </fields>
+    <fields>
+        <label><!-- Street Field Id --></label>
+        <name>pw_cc__StreetFieldId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Street Field --></label>
+        <name>pw_cc__StreetField__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sub-Building Lines --></label>
+        <name>pw_cc__SubBuildingLine__c</name>
+    </fields>
+    <fields>
+        <help><!-- Enabling this option will yield more precise address matching providing your data can support it --></help>
+        <label><!-- Address is always in correct fields --></label>
+        <name>pw_cc__UseAdvancedQuery__c</name>
+    </fields>
+    <fields>
+        <label><!-- Support street-level Address Validation --></label>
+        <name>pw_cc__UseForAddressValidation__c</name>
+    </fields>
+    <fields>
+        <label><!-- ZipCode Field Id --></label>
+        <name>pw_cc__ZipCodeFieldId__c</name>
+    </fields>
+    <fields>
+        <label><!-- ZIP Code Field --></label>
+        <name>pw_cc__ZipCodeField__c</name>
+    </fields>
+    <fields>
+        <label><!-- ZipCodeRelationshipField --></label>
+        <name>pw_cc__ZipCodeRelationshipField__c</name>
+    </fields>
+</CustomObjectTranslation>

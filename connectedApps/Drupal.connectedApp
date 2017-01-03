@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contactEmail>babiaberra@yahoo.com</contactEmail>
+    <label>Drupal</label>
+    <oauthConfig>
+        <callbackUrl>http://localhost/IDM/salesforce/oauth_callback</callbackUrl>
+        <consumerKey>3MVG9fMtCkV6eLhcok0RClNQ5DLS6dKRbC_QBdDGWAukwau_Jamj0jAFKj5G53hVevfF5.qFbGABuwYtSqBBb</consumerKey>
+        <scopes>Basic</scopes>
+        <scopes>Api</scopes>
+        <scopes>Web</scopes>
+        <scopes>Full</scopes>
+        <scopes>Chatter</scopes>
+        <scopes>CustomApplications</scopes>
+        <scopes>RefreshToken</scopes>
+        <scopes>OpenID</scopes>
+        <scopes>CustomPermissions</scopes>
+    </oauthConfig>
+</ConnectedApp>

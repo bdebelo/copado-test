@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- IsDeleted --></label>
+        <name>pw_cc__IsDeleted__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Obsolete --></label>
+        <name>pw_cc__IsObsolete__c</name>
+    </fields>
+    <fields>
+        <label><!-- Original State --></label>
+        <name>pw_cc__OriginalState__c</name>
+        <relationshipLabel><!-- Alternative State Names --></relationshipLabel>
+    </fields>
+</CustomObjectTranslation>

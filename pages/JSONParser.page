@@ -1,0 +1,9 @@
+<apex:page controller="JSON2Apex">
+	<apex:form >
+   		 <apex:commandButton action="{!tParse}" 
+                        value="Parse" />
+        
+        <apex:commandButton action="{!tParse}" 
+                        value="Parseer" />
+    </apex:form>
+</apex:page>

@@ -1,0 +1,172 @@
+<apex:page controller="signature.ReportPDFController" id="pg" standardStylesheets="true" tabStyle="SignatureReport__tab"  title="Signature Report">
+    <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <head>            
+          <apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"/>
+          <script>
+              function openpdf(){
+                  var sdate = $('[id$=dateStart]').val();
+                  var edate = $('[id$=dateEnd]').val();
+                  var sdate1 = new Date(sdate);
+                  var edate1 = new Date(edate);
+                  var sdate2 = sdate1.getFullYear() + "-" + (sdate1.getMonth()+1) + "-" + sdate1.getDate();
+                  var edate2 = edate1.getFullYear() + "-" + (edate1.getMonth()+1) + "-" + edate1.getDate();
+                  var include_Chatter = '';
+                  var legal = '';
+                  if(document.getElementById('pg:frm:checkId') != null)
+                     include_Chatter = document.getElementById('pg:frm:checkId').checked;
+                  if(document.getElementById('pg:frm:legalId') != null)
+                      legal = document.getElementById('pg:frm:legalId').checked; 
+                  if(document.getElementById('pg:frm:imagesId') != null)
+                     include_Images = document.getElementById('pg:frm:imagesId').checked;
+                  if(document.getElementById('pg:frm:stretchId') != null) 
+                     stretch_Images = document.getElementById('pg:frm:stretchId').checked;
+                  if(document.getElementById('pg:frm:completedId') != null) 
+                     complete_image = document.getElementById('pg:frm:completedId').checked;   
+                 
+                  //alert(sdate2+'!!'+edate2+'---'+include_Chatter);
+                  window.open('{!$Site.Prefix}/apex/ReportPDF?start='+sdate2+'&end='+edate2+'&chatter='+include_Chatter+'&legal='+legal+'&images='+include_Images+'&stretch='+stretch_Images+'&completed_signature='+complete_image);
+              }
+          </script>
+          <apex:stylesheet value="{!URLFOR($Resource.signature__SLDS105, 'assets/styles/salesforce-lightning-design-system-vf.css')}" />
+      </head>
+      <body>
+            <div class="slds">
+                <div class="slds-page-header" role="banner">
+                <div class="slds-grid">
+                  <div class="slds-text-heading--large">Signature Report</div>
+                </div>
+            </div><br/>
+          <apex:form id="frm">
+
+<article class="slds-card slds-card--narrow">
+  <div class="slds-card__header slds-grid">
+    <header class="slds-media slds-media--center slds-has-flexi-truncate">
+      <div class="slds-media__figure">
+        <svg aria-hidden="true" class="slds-icon slds-icon-standard-contact slds-icon--small">
+          <use xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#contact"></use>
+        </svg>
+      </div>
+      <div class="slds-media__body slds-truncate">
+        <h2>
+            <span class="slds-text-heading--small">Report Options</span>
+        </h2>
+      </div>
+    </header>
+  </div>
+  <div class="slds-card__body"><table width="40%" >
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="30%"><apex:outputLabel >Include Chatter</apex:outputLabel></td>
+                    <td>
+                       <apex:inputCheckbox id="checkId" value="{!includeChatter}" styleClass="slds-input" /> 
+                    </td>
+                </tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="30%"><apex:outputLabel >Include Images</apex:outputLabel></td>
+                    <td>
+                       <apex:inputCheckbox id="imagesId" value="{!includeImages}" selected="true" styleClass="slds-input" /> 
+                    </td>
+                </tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="30%"><apex:outputLabel >Stretch Images</apex:outputLabel></td>
+                    <td>
+                       <apex:inputCheckbox id="stretchId" value="{!stretchImages}" selected="true" styleClass="slds-input" /> 
+                    </td>
+                </tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="30%"><apex:outputLabel >Include Legal Text</apex:outputLabel></td>
+                    <td>
+                       <apex:inputCheckbox id="legalId" value="{!includeLegalText}" styleClass="slds-input" /> 
+                    </td>
+                </tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="30%"><apex:outputLabel >Only Completed Signatures</apex:outputLabel></td>
+                    <td>
+                       <apex:inputCheckbox id="completedId" value="{!completedSign}" styleClass="slds-input" /> 
+                    </td>
+                </tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="30%"><apex:outputLabel >Start Date</apex:outputLabel></td>
+                    <td>
+                       <apex:inputField value="{!startDate.signature__Date__c}" id="dateStart" styleClass="slds-input" style="width:300px"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="30%"><apex:outputLabel >End Date</apex:outputLabel></td>
+                    <td>
+                       <apex:inputField value="{!endDate.signature__Date__c}" id="dateEnd" styleClass="slds-input" style="width:300px"/>
+                    </td>
+                </tr>
+            </table></div>
+  <div class="slds-card__footer">&nbsp;</div>
+</article>
+
+            
+                  
+<!--<div class="slds-form-element">
+  <label class="slds-checkbox--toggle slds-grid">
+    <input name="legalId" type="checkbox" aria-describedby="toggle-desc" checked="" value="{!includeLegalText}" />
+    <span id="legalId" class="slds-checkbox--faux_container" aria-live="assertive">
+      <span class="slds-checkbox--faux"></span>
+      <span class="slds-checkbox--on">Enabled</span>
+      <span class="slds-checkbox--off">Disabled</span>
+    </span>&nbsp;
+    <span class="slds-form-element__label slds-m-bottom--none">Include Legal Text</span>
+  </label>
+</div>-->
+<!--
+<div class="slds-form-element">
+  <label class="slds-form-element__label" for="dateStart">Start Date</label>
+  <div class="slds-form-element__control">
+    <input id="dateStart" class="slds-input" type="date" placeholder="Start Date" value="2016-09-14" />
+  </div>
+</div>
+<div class="slds-form-element">
+  <label class="slds-form-element__label" for="dateStart">End Date</label>
+  <div class="slds-form-element__control">
+    <input id="dateEnd" class="slds-input" type="date" placeholder="End Date" value="2016-09-14" />
+  </div>
+</div>
+-->
+                  <!--<apex:outputText value="Signature Report" style="font-size:30px"/><br/><br/><br/>-->
+                  <!--<apex:outputText value="Include Chatter" style="font-size:20px"/>&nbsp;&nbsp;&nbsp;
+                  <apex:inputCheckbox value="{!includeChatter}" id="checkId"/><br/><br/>
+                  <apex:outputText value="Include Images" style="font-size:20px"/>&nbsp;&nbsp;&nbsp;
+                  <apex:inputCheckbox value="{!includeImages}" id="imagesId" selected="true"/>&nbsp;
+                  <apex:outputText value="Stretch" style="font-size:20px"/>&nbsp;&nbsp;&nbsp;
+                  <apex:inputCheckbox value="{!stretchImages}" id="stretchId" selected="true"/><br/><br/>
+                  <apex:outputText value="Include Legal" style="font-size:20px"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <apex:inputCheckbox value="{!includeLegalText}" id="legalId"/><br/><br/>  
+                  <apex:outputText value="Start Date:" style="font-size:20px"/>&nbsp;&nbsp;
+                  <apex:inputField value="{!startDate.signature__Date__c}" id="dateStart"/><br/><br/>
+                  <apex:outputText value="End Date:" style="font-size:20px"/>&nbsp;&nbsp;&nbsp;
+                  <apex:inputField value="{!endDate.signature__Date__c}" id="dateEnd"/>-->
+                  <br/><br/>
+                  <h3 class="slds-section__title">Sorry, the Signature Report is only available in the Paid version.</h3>
+                  <br />
+                  <apex:commandButton value="Run Report" onclick="openpdf();" styleClass="slds-button slds-button--neutral" disabled="true"/> <!-- style="width:140px; height:40px; background:#0066FF; color:white;font-size:13px" -->
+                  <br />
+
+          </apex:form>
+          <style type="text/css">
+              h1
+              {
+                  font-size: 20px; 
+                  color: Black;    
+              }
+              h2
+              {
+                  font-size: 15px; 
+                  color: Black;    
+              }
+          </style>
+       </div>
+    </body>
+</html>
+</apex:page>

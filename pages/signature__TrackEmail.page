@@ -1,0 +1,9 @@
+<apex:page controller="signature.TrackEmailController">
+<apex:form id="frm">
+<apex:actionFunction name="openEmail" action="{!openedEmail}" reRender="frm"/>
+</apex:form>
+<script>
+    openEmail();
+</script>
+    
+</apex:page>

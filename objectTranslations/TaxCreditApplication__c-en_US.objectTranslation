@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Tax Credit Application</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Tax Credit Applications</value>
+    </caseValues>
+    <fields>
+        <help><!-- PLEASE HAVE THE PRIMARY OWNER FILL OUT THESE QUESTIONS --></help>
+        <label><!-- Adults living in your household --></label>
+        <name>Adultslivinginyourhousehold__c</name>
+    </fields>
+    <fields>
+        <label><!-- Application Status --></label>
+        <name>ApplicationStatus__c</name>
+        <picklistValues>
+            <masterLabel>Active</masterLabel>
+            <translation><!-- Active --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Approved</masterLabel>
+            <translation><!-- Approved --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New</masterLabel>
+            <translation><!-- New --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rejected</masterLabel>
+            <translation><!-- Rejected --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Approver --></label>
+        <name>Approver__c</name>
+        <relationshipLabel><!-- Tax Credit Applications (Approver) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Approver&apos;s Name --></label>
+        <name>ApproversName__c</name>
+    </fields>
+    <fields>
+        <label><!-- Block --></label>
+        <name>Block__c</name>
+    </fields>
+    <fields>
+        <help><!-- Children in kindergarten or elementary school (1st Grade to 5th Grade): --></help>
+        <label><!-- Children in kindergarten or elementary --></label>
+        <name>Childreninkindergartenorelementarys__c</name>
+    </fields>
+    <fields>
+        <label><!-- Children pre-school age &amp; below --></label>
+        <name>Childrenpreschoolagebelow__c</name>
+    </fields>
+    <fields>
+        <help><!-- Please select the option that best represents your child’s or children’s school enrollment --></help>
+        <label><!-- Children’s school enrollment --></label>
+        <name>Childrensschoolenrollment__c</name>
+        <picklistValues>
+            <masterLabel>In private school and will stay in private school after this change of residence</masterLabel>
+            <translation><!-- In private school and will stay in private school after this change of residence --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In public school and will stay in public school after this change of residence</masterLabel>
+            <translation><!-- In public school and will stay in public school after this change of residence --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Some children in public school and some in private school regardless of change of residence</masterLabel>
+            <translation><!-- Some children in public school and some in private school regardless of change of residence --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transitioning from private school to public school with this change of residence</masterLabel>
+            <translation><!-- Transitioning from private school to public school with this change of residence --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transitioning from public school to private school with this change of residence</masterLabel>
+            <translation><!-- Transitioning from public school to private school with this change of residence --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Contract Amount --></label>
+        <name>ContractAmount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contract Date --></label>
+        <name>ContractDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Lot --></label>
+        <name>Lot__c</name>
+    </fields>
+    <fields>
+        <help><!-- If you selected other for employment status please fill this out --></help>
+        <label><!-- Other --></label>
+        <name>Other_Employment_Status__c</name>
+    </fields>
+    <fields>
+        <help><!-- The new location has the following advantages: (Select up to three choices) --></help>
+        <label><!-- Primary reasons for moving --></label>
+        <name>Primaryreasonsformoving__c</name>
+        <picklistValues>
+            <masterLabel>Better lot/yard size</masterLabel>
+            <translation><!-- Better lot/yard size --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Closer to a public park</masterLabel>
+            <translation><!-- Closer to a public park --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Closer to a shopping area</masterLabel>
+            <translation><!-- Closer to a shopping area --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Closer to family/friends</masterLabel>
+            <translation><!-- Closer to family/friends --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Easier to pursue an education</masterLabel>
+            <translation><!-- Easier to pursue an education --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Higher quality public school</masterLabel>
+            <translation><!-- Higher quality public school --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lower crime rate</masterLabel>
+            <translation><!-- Lower crime rate --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No advantage, the move is involuntary</masterLabel>
+            <translation><!-- No advantage, the move is involuntary --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Shorter commute to work</masterLabel>
+            <translation><!-- Shorter commute to work --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Sales Amount --></label>
+        <name>SalesAmount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Section --></label>
+        <name>Section__c</name>
+    </fields>
+    <fields>
+        <label><!-- Submitted By --></label>
+        <name>SubmittedBy__c</name>
+        <relationshipLabel><!-- Tax Credit Applications (Submitted By) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Ward --></label>
+        <name>Ward__c</name>
+    </fields>
+    <fields>
+        <label><!-- What is your current employment status --></label>
+        <name>Whatisyourcurrentemploymentstatus__c</name>
+        <picklistValues>
+            <masterLabel>Employed</masterLabel>
+            <translation><!-- Employed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Homemaker</masterLabel>
+            <translation><!-- Homemaker --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Looking for Work</masterLabel>
+            <translation><!-- Looking for Work --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retired</masterLabel>
+            <translation><!-- Retired --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Student</masterLabel>
+            <translation><!-- Student --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unemployed</masterLabel>
+            <translation><!-- Unemployed --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- What is your gender --></label>
+        <name>Whatisyourgender__c</name>
+        <picklistValues>
+            <masterLabel>Female</masterLabel>
+            <translation><!-- Female --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Male</masterLabel>
+            <translation><!-- Male --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Refused</masterLabel>
+            <translation><!-- Refused --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- What is your marital status --></label>
+        <name>Whatisyourmaritalstatus__c</name>
+        <picklistValues>
+            <masterLabel>Divorced / Widowed / Separated</masterLabel>
+            <translation><!-- Divorced / Widowed / Separated --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Living as married with a partner</masterLabel>
+            <translation><!-- Living as married with a partner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Married</masterLabel>
+            <translation><!-- Married --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Refused</masterLabel>
+            <translation><!-- Refused --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Single (never married)</masterLabel>
+            <translation><!-- Single (never married) --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Please add description of your employment status --></errorMessage>
+        <name>Employment_status_other_description</name>
+    </validationRules>
+</CustomObjectTranslation>

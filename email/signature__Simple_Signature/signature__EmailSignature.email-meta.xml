@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Email for Signature</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>signature__Simple</letterhead>
+    <name>EmailSignature</name>
+    <style>freeForm</style>
+    <subject>Signature Requested</subject>
+    <textOnly>Hi {!Contact.FirstName},
+
+Please click the button below to sign something important:
+
+http://simplesignature-developer-edition.na30.force.com/apex/EmailSignature?id={!signature__Signature__c.Id} 
+
+Thank you!
+Somebody</textOnly>
+    <type>html</type>
+</EmailTemplate>

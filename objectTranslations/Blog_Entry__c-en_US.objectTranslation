@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Blog Entry</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Blog Entries</value>
+    </caseValues>
+    <fields>
+        <label><!-- Author --></label>
+        <name>Author__c</name>
+    </fields>
+    <fields>
+        <label><!-- Blog Tags --></label>
+        <name>Blog_Tags__c</name>
+    </fields>
+    <fields>
+        <label><!-- Category --></label>
+        <name>Category__c</name>
+    </fields>
+    <fields>
+        <label><!-- Lead Copy --></label>
+        <name>Lead_Copy__c</name>
+    </fields>
+    <fields>
+        <label><!-- Link --></label>
+        <name>Link__c</name>
+    </fields>
+    <fields>
+        <label><!-- Page Hits --></label>
+        <name>Page_Hits__c</name>
+    </fields>
+    <fields>
+        <label><!-- Publish_Text --></label>
+        <name>Publish_Text__c</name>
+    </fields>
+    <fields>
+        <label><!-- Published --></label>
+        <name>Published__c</name>
+    </fields>
+    <fields>
+        <label><!-- Report_Title_Author --></label>
+        <name>Report_Title_Author__c</name>
+    </fields>
+    <fields>
+        <label><!-- SEO Title --></label>
+        <name>SEO_Title__c</name>
+    </fields>
+    <fields>
+        <label><!-- Tag 1 --></label>
+        <name>Tag_1__c</name>
+    </fields>
+    <fields>
+        <label><!-- Tag 2 --></label>
+        <name>Tag_2__c</name>
+    </fields>
+    <fields>
+        <label><!-- Tag 3 --></label>
+        <name>Tag_3__c</name>
+    </fields>
+    <fields>
+        <label><!-- Tag 4 --></label>
+        <name>Tag_4__c</name>
+    </fields>
+    <fields>
+        <label><!-- Tag 5 --></label>
+        <name>Tag_5__c</name>
+    </fields>
+    <fields>
+        <label><!-- Title --></label>
+        <name>Title__c</name>
+    </fields>
+    <fields>
+        <label><!-- Wordpress Link --></label>
+        <name>Wordpress__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- BooleanValue --></label>
+        <name>pw_cc__BooleanValue__c</name>
+    </fields>
+    <fields>
+        <label><!-- IntegerValue --></label>
+        <name>pw_cc__IntegerValue__c</name>
+    </fields>
+    <fields>
+        <label><!-- StringListValue --></label>
+        <name>pw_cc__StringListValue__c</name>
+    </fields>
+    <fields>
+        <label><!-- StringValue --></label>
+        <name>pw_cc__StringValue__c</name>
+    </fields>
+    <fields>
+        <label><!-- ValueType --></label>
+        <name>pw_cc__ValueType__c</name>
+        <picklistValues>
+            <masterLabel>Boolean</masterLabel>
+            <translation><!-- Boolean --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>String</masterLabel>
+            <translation><!-- String --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>StringList</masterLabel>
+            <translation><!-- StringList --></translation>
+        </picklistValues>
+    </fields>
+</CustomObjectTranslation>

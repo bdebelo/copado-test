@@ -1,0 +1,38 @@
+<apex:component >
+  <div class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container">
+      <p class="navbar-text pull-left"> © 2015 - Department of Early Education &amp; Care
+           <a href="http://www.mass.gov/portal/" >(EEC)</a>
+      </p>
+      
+      <div class="social-buttons">
+        <a href="#" class="navbar-btn btn pull-right">
+        <i id="social" class="fa fa-facebook-square fa-3x"></i></a>
+        <a href="https://twitter.com/masseducation" class="navbar-btn btn pull-right">
+        <i id="social" class="fa fa-twitter-square fa-3x"></i></a>
+        <a href="#" class="navbar-btn btn pull-right">
+        <i id="social" class="fa fa-envelope-square fa-3x"></i></a>
+      </div>
+    </div>
+  </div>
+  
+   <!-- Angular Dependencies -->
+   <apex:includeScript value="{!URLFOR($Resource.AngularAssets, 'AngularAssets/js/lib/angular.min.js')}"/>
+   <apex:includeScript value="{!URLFOR($Resource.AngularAssets, 'AngularAssets/js/lib/angular-animate.min.js')}"/>
+   <apex:includeScript value="{!URLFOR($Resource.AngularAssets, 'AngularAssets/js/lib/angular-aria.min.js')}"/>
+   <apex:includeScript value="{!URLFOR($Resource.AngularAssets, 'AngularAssets/js/lib/angular-messages.min.js')}"/>
+      
+   <!-- Angular Material -->
+   <apex:includeScript value="{!URLFOR($Resource.AngularAssets, 'AngularAssets/js/lib/angular-material.min.js')}"/>
+    
+   <!-- Angular 3rd Party Libraries -->
+   <apex:includeScript value="{!URLFOR($Resource.AngularAssets, 'AngularAssets/js/lib/ng-file-upload.min.js')}"/>
+   <apex:includeScript value="{!URLFOR($Resource.AngularAssets, 'AngularAssets/js/lib/ng-file-upload-shim.min.js')}"/>
+    
+   <!-- Angular App -->
+   <apex:includeScript value="{!URLFOR($Resource.AngularAssets, 'AngularAssets/js/app.js')}"/>
+   <apex:includeScript value="{!URLFOR($Resource.AngularAssets, 'AngularAssets/js/modules/eecWizard.js')}"/>
+   <apex:includeScript value="{!URLFOR($Resource.AngularAssets, 'AngularAssets/js/modules/s3FileUpload.js')}"/>
+   <apex:includeScript value="{!URLFOR($Resource.AngularAssets, 'AngularAssets/js/services/util.js')}"/>
+   
+</apex:component>

@@ -1,0 +1,660 @@
+<apex:page controller="signature.ConfigureController" title="Simple Signature Configuration" setup="true" applyBodyTag="false" docType="html-5.0" standardStylesheets="true">
+    <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <head>    
+            <apex:stylesheet value="{!URLFOR($Resource.signature__SLDS105, 'assets/styles/salesforce-lightning-design-system-vf.css')}" /> 
+            <style>
+                 .datePicker{
+                      z-index:11111111 !important
+                  }
+                .bPageBlock{
+                            background-color:#fff !important;
+                            border-top:0px !important;
+                            border: 0px !important;
+                }
+                .pbSubheader{ display: -webkit-box;background-color:#F4F6F9 !important;color:#54698d !important;border: 0px !important;}
+                .pbBottomButtons{border-top:0px !important;}
+                .disableBtn{
+                    pointer-events: none;
+                    cursor: default;  
+                    background: linear-gradient(to bottom, #DEDDDD 5%, #DEDDDD 100%) !important;  
+                }
+                .data2Col{border:0px !important;}
+        
+                .custPopup{
+                        background-color: white;
+                        border-width: 2px;
+                        border-style: solid;
+                        z-index: 4;
+                        padding:10px;
+                        position: absolute;
+                        /* These are the 3 css properties you will need to change so the popup
+                        displays in the center of the screen. First set the width. Then set
+                        margin-left to negative half of what the width is. You can add
+                        the height property for a fixed size pop up if you want.*/
+                        margin-left: -20%;
+                    }
+                    .popupBackground{
+                        background-color:black;
+                        opacity: 0.20;
+                        filter: alpha(opacity = 20);
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        top: 0;
+                        left: 0;
+                        z-index: 1;
+                    }
+                .customBtn {
+                    -moz-box-shadow:2px 2px 2px 2px #999999;
+                    -webkit-box-shadow:2px 2px 2px 2px #999999;
+                    box-shadow:2px 2px 2px 2px #999999;
+                    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #40B5E6), color-stop(1, #40B5E6));
+                    background:-moz-linear-gradient(top, #40B5E6 5%, #40B5E6 100%);
+                    background:-webkit-linear-gradient(top, #40B5E6 5%, #40B5E6 100%);
+                    background:-o-linear-gradient(top, #40B5E6 5%, #40B5E6 100%);
+                    background:-ms-linear-gradient(top, #40B5E6 5%, #40B5E6 100%);
+                    background:linear-gradient(to bottom, #40B5E6 5%, #40B5E6 100%);
+                    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#40B5E6', endColorstr='#40B5E6',GradientType=0);
+                    background-color:#40B5E6;
+                    -moz-border-radius:3px;
+                    -webkit-border-radius:3px;
+                    border-radius:3px;
+                    border:0px;
+                    display:inline-block;
+                    cursor:pointer;
+                    color:#ffffff;
+                    font-family:arial;
+                    font-size:11px;
+        
+                    padding:6px 24px;
+                    text-decoration:none;
+                    text-shadow:0px;
+                }
+        
+                #comparison {
+                    width: 100%;
+                    border-collapse: collapse;
+                }
+                
+                #comparison td, #comparison th {
+                    font-size: 1em;
+                    border: 1px solid #1797c0;
+                    padding: 3px 7px 2px 7px;
+                }
+                
+                #comparison th {
+                    font-size: 1.1em;
+                    text-align: left;
+                    padding-top: 5px;
+                    padding-bottom: 4px;
+                    background-color: #A7C942;
+                    color: #ffffff;
+                }
+                
+                #comparison tr.alt td {
+                    color: #000000;
+                    background-color: #EAF2D3;
+                }
+            </style>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js">
+            <script>var j$ = jQuery.noConflict();</script>
+            <script>
+                var j$ = jQuery.noConflict();
+                j$(document).ready(function() {
+                    if ( (typeof window.sforce != 'undefined') && (window.sforce!=null) ) {
+                        var ftr = document.getElementById('ftr');
+                        ftr.style.width='100%';
+                    }else{
+                        var ftr = document.getElementById('ftr');
+                        ftr.style.position ='absolute';
+                        ftr.style.bottom ='0';
+                        
+                    }
+                });
+                
+               
+            </script>
+            <script>
+                
+                function colorValues(updatecolor){
+                    
+                    var elements = document.getElementById('{!$Component.frm.newblock.sections.colorvalues.colorValue}');
+                    
+                    var colorVal = '';
+                    if(updatecolor == 'highlightButton'){
+                        colorVal= '#C5908E';
+                        elements.disabled=false;
+                    }
+                    else if(updatecolor == 'highlightField'){
+                        colorVal = '#7FFFD4';
+                        elements.disabled=false;
+                    }else{
+                        colorVal  = '';
+                        elements.value = colorVal;
+                        elements.disabled=true;
+                    }
+                    elements.value = colorVal;
+                    colorValue(colorVal);
+                }
+                function DynamicDatePicker(d_id)
+                        {
+                            DatePicker.pickDate(false,d_id.id,false);
+                        }
+            </script>
+            <script>
+                var $ = jQuery.noConflict();
+                $(document).ready(function(){
+                     // setting rating
+                    var doc = document.getElementsByName('rating');
+                    var ratingNumber ='{!JSENCODE(feedbackRating)}';
+                    for( var i=0;i < doc.length;i++){
+                        if(doc[i].value == ratingNumber){doc[i].checked=true;}
+                    }
+                    var isdisablenew = {!diabledNewBTN};
+                    if(isdisablenew == true){
+                        var k = document.getElementById('{!$Component.frm.lstblock.newbtns.newbtn}');//.disabled = 'disabled';
+                        var k2 = k.getAttribute('class')+ ' disableBtn';
+                        k.setAttribute('class',k2);
+                        
+                    }  
+                    var isOnload = {!isOnLoad};
+                    if(isOnload == true)
+                        createLicenseRecord();
+                });    
+            </script>
+            <script>
+                var j$ = jQuery.noConflict();
+                function showEditNewScreenBackPopop(){
+                    j$("#showEditNewScreen").addClass("slds-fade-in-open");
+                    j$("#showEditNewScreen").removeClass("slds-modal__close");
+                    j$("#showEditNewScreenBack").addClass("slds-modal-backdrop--open");
+                    j$("#showEditNewScreenBack").removeClass("slds-modal-backdrop--close");
+                        
+                }
+                function hideEditNewScreenBackPopop(){
+                    j$('#showEditNewScreen').removeClass('slds-fade-in-open');
+                    j$('#showEditNewScreen').addClass('slds-modal__close');
+                    j$('#showEditNewScreenBack').removeClass('slds-modal-backdrop--open');
+                    j$('#showEditNewScreenBack').addClass('slds-modal-backdrop--close');
+                        
+                }
+                function showVarifySettingPopop(){
+                    j$("#varifysettingPopup").addClass("slds-fade-in-open");
+                    j$("#varifysettingPopup").removeClass("slds-modal__close");
+                    j$("#varifysettingPopupback").addClass("slds-modal-backdrop--open");
+                    j$("#varifysettingPopupback").removeClass("slds-modal-backdrop--close");
+                        
+                }
+                function hideVarifySettingPopop(){
+                    j$('#varifysettingPopup').removeClass('slds-fade-in-open');
+                    j$('#varifysettingPopup').addClass('slds-modal__close');
+                    j$('#varifysettingPopupback').removeClass('slds-modal-backdrop--open');
+                    j$('#varifysettingPopupback').addClass('slds-modal-backdrop--close');
+                        
+                }
+                function showconfirmSavePopop(){
+                    j$("#confirmSave").addClass("slds-fade-in-open");
+                    j$("#confirmSave").removeClass("slds-modal__close");
+                    j$("#confirmSaveback").addClass("slds-modal-backdrop--open");
+                    j$("#confirmSaveback").removeClass("slds-modal-backdrop--close");
+                        
+                }
+                function hideconfirmSavePopop(){
+                    j$('#confirmSave').removeClass('slds-fade-in-open');
+                    j$('#confirmSave').addClass('slds-modal__close');
+                    j$('#confirmSaveback').removeClass('slds-modal-backdrop--open');
+                    j$('#confirmSaveback').addClass('slds-modal-backdrop--close');
+                        
+                }
+                function showsendFeedbackPopup(){
+                    j$("#sendFeedback").addClass("slds-fade-in-open");
+                    j$("#sendFeedback").removeClass("slds-modal__close");
+                    j$("#sendFeedbackBack").addClass("slds-modal-backdrop--open");
+                    j$("#sendFeedbackBack").removeClass("slds-modal-backdrop--close");
+                        
+                }
+                function hidesendFeedbackPopup(){
+                    j$('#sendFeedback').removeClass('slds-fade-in-open');
+                    j$('#sendFeedback').addClass('slds-modal__close');
+                    j$('#sendFeedbackBack').removeClass('slds-modal-backdrop--open');
+                    j$('#sendFeedbackBack').addClass('slds-modal-backdrop--close');
+                        
+                }
+                function showRating(ratingNumber){
+                
+                    if(ratingNumber == '1' || ratingNumber == '2' || ratingNumber == '3'){
+                        
+                        showsendFeedbackPopup();
+                        ratingNumberAssign(ratingNumber);
+                    }else{
+                        sendfeedEmail(ratingNumber);
+                    }
+                    
+                }
+                
+                function showpopup(displaypop){
+                    if(displaypop == 'true'){
+                        //j$('#dispositionPopup').show();
+                        j$('.filterpopup').show();        
+                    }
+                    else{
+                        j$['$id=Reclst'].hide();    
+                    }
+                    return false;
+                }
+            </script>
+        </head>
+        <body>
+            <div class="slds">
+                <div class="slds-page-header" role="banner">
+                    <div class="slds-grid">
+                        <div class="slds-col slds-has-flexi-truncate">
+                            <apex:sectionHeader title="Configure Options" subtitle="Simple Signature Setup"/>
+                            <apex:image url="{!$Resource.signature__SSLogo}" style="position:absolute;top:10px;right:10px;"/>
+                            <div class="slds-grid">
+                            <div class="slds-grid slds-type-focus slds-no-space">
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+            <apex:form id="frm">
+                <apex:actionFunction action="{!createLicenseRecord}" ReRender="nextValue" status="overlayStatus" name="createLicenseRecord">
+                    
+                </apex:actionFunction>
+                <apex:actionFunction name="ratingNumberAssign" reRender="pnl,topMessage2-1,topMessage,reviewbtn">
+                    <apex:param name="feedbackRating" value="" assignTo="{!feedbackRating}"/>
+                </apex:actionFunction>
+                <apex:actionFunction name="sendfeedEmail" action="{!SendfeebbackMail}" reRender="pnl,topMessage2-1,topMessage,reviewbtn" status="Status">
+                    <apex:param name="feedbackRating" value="" assignTo="{!feedbackRating}"/>
+                </apex:actionFunction>
+                <apex:actionFunction name="License" action="{!licenceStatus}" reRender="popup2,licKey,popupbtn" status="Status1">
+                    <Apex:param name="displayPopupDisp1" assignTo="{!displayPopupDisp1}" value="" />
+                </apex:actionFunction>
+                <apex:actionFunction name="LicencedOK" reRender="LicencePopup" status="overlayStatus" rendered="{!LicenceInfoStatus}">
+                    <Apex:param name="displayPopupDisp1" assignTo="{!displayPopupDisp1}" value="" />
+                </apex:actionFunction>
+                <apex:outputPanel id="pnal11">
+                    <apex:actionFunction name="UnLicencedOK" action="{!validateLicenseKey}" reRender="licKey,popupbtn,topMessage,pnal11,popup2,popupkeymgs" status="Status1" oncomplete="var k={!displayPopupDisp1};if(!k){ hideVarifySettingPopop(); }">
+                        <Apex:param name="displayPopupDisp" assignTo="{!displayPopupDisp}" value="" />
+                        <Apex:param name="pagemessage" assignTo="{!pagemessage}" value="" />
+                    </apex:actionFunction>
+                </apex:outputPanel>
+
+                <apex:outputpanel >
+                    <apex:actionstatus id="overlayStatus">
+                        <apex:facet name="start">
+                            <div class="waitingSearchDiv" id="el_loading" style="background-color: #fbfbfb;
+                                   height: 100%;opacity:0.65;width:100%;"> 
+                                <div class="waitingHolder" style="top: 40%; width: 500px;left:30%;position:fixed;height: 500px;">
+                                    <img class="waitingImage" src="{!URLFOR($resource.SLDS080,'/assets/images/spinners/slds_spinner_brand.gif')}" title="Please Wait..." />
+                                    <span class="waitingDescription">Please Wait...</span>
+                                </div>
+                            </div>
+                        </apex:facet>
+                    </apex:actionstatus>
+                </apex:outputpanel>
+                <apex:outputPanel >
+                    <div id="topMessage11" class="slds-notify slds-notify--alert slds-theme--alert-texture" role="alert" style="{!if(AND(pageMessage != null,pageMessage != ''),'','display:none;')}">
+                          <span class="slds-assistive-text">Info</span>
+                          <h2>
+                            <svg aria-hidden="true" class="slds-icon icon-text-email slds-icon--small slds-m-right--x-small">
+                              <use xlink:href="{!URLFOR($resource.SLDS080,'/assets/icons/action-sprite/svg/symbols.svg#email')}"></use>
+                            </svg>
+                            <apex:outputPanel id="topMessage">
+                                <script>
+                                    var kk = '{!JSENCODE(pageMessage)}';
+                                    if(kk != '' && kk != 'null')
+                                        document.getElementById('topMessage11').style.display='';
+                                    else
+                                        document.getElementById('topMessage11').style.display='none';
+                                </script>
+                                <apex:outputtext value="{!pageMessage}"/>
+                            </apex:outputPanel>
+                        </h2>
+                    </div>
+                    <apex:pagemessages ></apex:pagemessages>
+                </apex:outputPanel>
+                <table width="100%" border="0"><tr><td valign="top">
+                    
+                    <apex:pageBlock id="lstblock">
+                        <section aria-labelledby="page-header-component" >
+                            <div class="slds-page-header" style="padding: 8px 10px 10px;">
+                                <div class="slds-grid slds-grid--align-spread" style="height:15px;">
+                                    <div class="slds-media slds-col">
+                                        <div class="slds-media__figure">
+                                            <p class="slds-text-heading--label" style="font-weight:bold;font-size:12px">App Configuration</p>
+                                        </div>               
+                                    </div>            
+                                </div>
+                            </div>
+                        </section><br/>
+                        
+<apex:outputPanel > <!-- rendered="{!LicenceInfoStatus}" -->
+<article class="slds-card" >
+  <div class="slds-card__header slds-grid" >
+    <header class="slds-media slds-media--center slds-has-flexi-truncate">
+      <div class="slds-media__figure">
+        <svg aria-hidden="true" class="slds-icon slds-icon-standard-contact slds-icon--small">
+          <use xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#contact"></use>
+        </svg>
+      </div>
+      <div class="slds-media__body slds-truncate">
+        <h2>
+          <a href="javascript:void(0);" class="slds-text-link--reset">
+            <span class="slds-text-heading--small">Configuration Steps: Free Version</span>
+          </a>
+        </h2>
+      </div>
+    </header>
+  </div>
+  <!--<div class="slds-card__body slds-text-align--center">Free Version</div>
+  <div class="slds-card__body">This is the place where instructions are given.</div> -->
+  <div class="slds-card__footer"><br /><b>Congratulations on installing the Simple Signature App!</b></div>
+  <div class="slds-card__footer">Please review the <a href="/apex/signature__ImplementationGuide">Implementation Guide</a> to get started.  Basically, you only have a few things to configure:</div>
+  <div class="slds-card__footer"><ul class="slds-list--dotted">
+  <li>Add the Signature Form to Salesforce1</li>
+  <li>Add, Remove or Change fields on the Signature Form</li>
+  <li>Connect the Signatures to a parent object (Optional)</li>
+</ul>
+<br />Once you have finished these simple steps, you are good to start using simple signatures in Salesforce.
+<br /><br />Thank you, and welcome to the <i>To A Finish</i>™ family!</div>
+</article>
+</apex:outputPanel>
+
+                        <!--
+                        <div style="height:900px">
+                            <table style="width: 80%">
+                                <tr style="width:100%">
+                                    <td style="width:50%"><apex:outputLabel >Auto-create Leads on Save?</apex:outputLabel></td>
+                                    <td style="width:50%"><apex:inputCheckbox value="{!createLeadonsave}" styleClass="slds-input"/></td>
+                                </tr>
+                           </table><br/>
+                        <apex:pageBlockTable value="{!recordList}" var="rec">
+                            <apex:column headerValue="Action">
+                                <apex:commandLink value="Edit"/>&nbsp;|&nbsp;<apex:commandLink value="Del" action="{!deleteRec}" >
+                                    <apex:param name="devName" value="{!rec.DeveloperName}"/>
+                                 </apex:commandLink>
+                            </apex:column>
+                            <apex:column headerValue="Label" value="{!rec.Label}"/>
+                            <apex:column headerValue="Record Creation Name" value="{!rec.DeveloperName}"/>
+                            <apex:column headerValue="Lead Field" value="{!rec.LeadField__c}"/>
+                            <apex:column headerValue="Signature Field" value="{!rec.Signature_Field__c}" />
+                            <apex:column headerValue="Default Value" value="{!rec.DefaultValue__c}"/>
+                        </apex:pageBlockTable>   <br/><br/> 
+                        <apex:commandButton value="Save Settings" action="{!saveSettings}" styleClass="slds-button slds-button--neutral"/>
+                            
+                        </div>
+                        <apex:outputPanel id="noRec">
+                            
+                        </apex:outputPanel>
+                        <apex:outputpanel id="Reclst" style="height:90%">
+                        </apex:outputPanel>  
+                        // -->  
+                    </apex:pageBlock>
+                        <br/>
+                        
+                    <apex:pageBlock >
+                        <section aria-labelledby="page-header-component" >
+                            <div class="slds-page-header" style="padding: 8px 10px 10px;">
+                                <div class="slds-grid slds-grid--align-spread" style="height:15px;">
+                                    <div class="slds-media slds-col">
+                                        <div class="slds-media__figure">
+                                            <p class="slds-text-heading--label" style="font-weight:bold;font-size:12px">OPTIONAL: PLEASE RATE THIS APP</p>
+                                        </div>               
+                                    </div>            
+                                </div>
+                            </div>
+                        </section>
+                        <br/>
+                        <div id="topMessage21" class="slds-notify slds-notify--alert slds-theme--alert-texture" role="alert" style="display:none;">
+                            <span class="slds-assistive-text">Info</span>
+                            <h2>
+                                <svg aria-hidden="true" class="slds-icon icon-text-email slds-icon--small slds-m-right--x-small">
+                                  <use xlink:href="{!URLFOR($Resource.SLDS080,'/assets/icons/action-sprite/svg/symbols.svg#email')}"></use>
+                                </svg>
+                                <apex:outputPanel id="topMessage2-1">
+                                    <script>
+                                        var kk = '{!JSENCODE(feedbackSendStatus)}';
+                                        if(kk != '' && kk != 'null')
+                                            document.getElementById('topMessage21').style.display='';
+                                        else
+                                            document.getElementById('topMessage21').style.display='none';
+                                        // setting rating
+                                        var doc = document.getElementsByName('rating');
+                                        var ratingNumber ='{!JSENCODE(feedbackRating)}';
+                                        for( var i=0;i < doc.length;i++){
+                                            //alert(doc[i].value);
+                                            if(doc[i].value == ratingNumber){doc[i].checked=true;}
+                                        }
+                                    </script>
+                                    <apex:outputtext value="{!feedbackSendStatus}"/>
+                                </apex:outputPanel>
+                            </h2>
+                        </div>
+                        <apex:pageBlockSection columns="1" id="step2-1" >
+                            <apex:pageBlockSectionItem > 
+                                If you enjoy our app, please tell others about it.  User ratings, more than anything else, encourages other users to try us out.
+                            </apex:pageBlockSectionItem>
+                        </apex:pageBlockSection>
+                        <apex:pageBlockSection columns="1">
+                            <apex:pageblockSectionItem >
+                                <apex:outputPanel id="reviewbtn" >
+                                    <apex:commandButton styleClass="slds-button slds-button--neutral" onclick="window.open('https://appexchange.salesforce.com/listingDetail?listingId=a0N3A00000DqCoUUAV&tab=r','__blank');return false;" value="Please leave a review on the AppExchange" />
+                                    <!-- rendered="{!OR(JSENCODE(feedbackRating) = '4',JSENCODE(feedbackRating) ='5')}" -->
+                                </apex:outputPanel>
+                            </apex:pageblockSectionItem>
+                        </apex:pageBlockSection>
+                    </apex:pageBlock>
+                </td>
+                <td width="30%" valign="top">
+                    <apex:pageBlock >
+                        <section aria-labelledby="page-header-component" >
+                            <div class="slds-page-header" style="padding: 8px 10px 10px;">
+                                <div class="slds-grid slds-grid--align-spread" style="height:15px;">
+                                    <div class="slds-media slds-col">
+                                        <div class="slds-media__figure">
+                                            <p class="slds-text-heading--label" style="font-weight:bold;font-size:12px">About Simple Signature</p>
+                                        </div>               
+                                    </div>            
+                                </div>
+                            </div>
+                        </section>
+                        <Apex:pageBlockButtons location="bottom" >
+                            <apex:commandLink value="" onclick="showVarifySettingPopop();License(true);return false;" styleClass="slds-button slds-button--neutral" style="margin:0px 0px; font-family:arial; font-size:14px; font-weight:bold; padding:6px 6px; text-decoration:none;">
+                                     <apex:image value="/img/icon/trophy16.png" />&nbsp; Upgrade &nbsp;
+                            </apex:commandLink>
+                        </Apex:pageBlockButtons>
+                        <br/>
+                        <p align="justify">Introducing a simple solution to capture signatures on the Force.com platform. With Simple Signature you can acquire signatures on release forms, petitions, waivers, and other simple forms that need a few key data elements and a signature. Simple.<br />&nbsp;</p>
+                        <p><b>Version Comparison</b></p>
+                        <p><table id="comparison" class="slds-table slds-table--bordered">
+                            <thead>
+                                <tr class="slds-text-heading--label">
+                                    <th scope="col"><b>Feature</b></th>
+                                    <th style="text-align: center;"><b>  Free   </b></th>
+                                    <th style="text-align: center;"><b>Paid</b></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="slds-hint-parent"><td>Technical Support</td><td style="text-align: center;"></td><td style="text-align: center;">✔</td></tr>
+                                <tr class="slds-hint-parent"><td>Emailed Signature Requests</td><td style="text-align: center;"></td><td style="text-align: center;">✔</td></tr>
+                                <tr class="slds-hint-parent"><td>Signature Request Tracking</td><td style="text-align: center;"></td><td style="text-align: center;">✔</td></tr>
+                                <tr class="slds-hint-parent"><td>Dashboard Analytics</td><td style="text-align: center;"></td><td style="text-align: center;">✔</td></tr>
+                                <tr class="slds-hint-parent"><td>Report of Signatures (with Chatter)</td><td style="text-align: center;"></td><td style="text-align: center;">✔</td></tr>
+                                <tr class="slds-hint-parent"><td>Custom Fields on the Form</td><td style="text-align: center;">✔</td><td style="text-align: center;">✔</td></tr>
+                                <tr class="slds-hint-parent"><td>Link to Any Object</td><td style="text-align: center;">✔</td><td style="text-align: center;">✔</td></tr>
+                                <tr class="slds-hint-parent"><td>Automated Lead Creation</td><td style="text-align: center;"></td><td style="text-align: center;">✔</td></tr>
+                            </tbody>
+                        </table></p>
+                    </apex:pageBlock>
+                </td></tr></table>
+                <div>
+                    <div aria-hidden="false" id="sendFeedback" role="dialog" class="slds-modal slds-modal__close">
+                        <div class="slds-modal__container"> 
+                            <div class="slds-modal__header">
+                                <h2 class="slds-text-heading--medium">Feedback Info</h2>
+                                <button class="slds-button slds-modal__close" onclick="hidesendFeedbackPopup();return false;">
+                                    <svg aria-hidden="true" class="slds-button__icon slds-button__icon--inverse slds-button__icon--large">
+                                        <use xlink:href="{!URLFOR($resource.SLDS080,'/assets/icons/action-sprite/svg/symbols.svg#close')}"></use>
+                                    </svg>
+                                    <span class="slds-assistive-text">Close</span>
+                                </button>
+                            </div>
+                            <div class="slds-modal__content">
+                                <div>
+                                    <div class="slds-notify slds-notify--alert slds-theme--alert-texture" role="alert">
+                                      <span class="slds-assistive-text">Info</span>
+                                      <!--button class="slds-button close slds-icon--small">
+                                        <svg aria-hidden="true" class="slds-button__icon slds-button__icon--inverse">
+                                         
+                                        </svg>
+                                        <span class="slds-assistive-text">Close</span>
+                                      </button-->
+                                      <h2>
+                                         <apex:outputText value="Please tell us how we can improve the app!"/>    
+                                      </h2>
+                                    </div>
+                                    <br/>
+                                    <apex:outputPanel id="popup2-1">
+                                        <apex:pageblock mode="edit" >
+                                            <apex:pageBlockButtons location="bottom">
+                                                <apex:commandButton value=" Submit Feedback " styleClass="slds-button slds-button--neutral" action="{!SendfeebbackMail}" reRender="popup2-1,topMessage2-1" oncomplete="hidesendFeedbackPopup();" status="Status2-1"/>
+                                            </apex:pageBlockButtons>
+                                            <apex:pageBlockSection columns="1">
+                                                
+                                                <apex:pageBlockSectionItem >
+                                                    <apex:outputlabel value="Feedback"/>
+                                                    <apex:inputTextArea value="{!feedbackMessage}" style="width: 100%;"/>
+                                                </apex:pageBlockSectionItem>
+                                                
+                                            </apex:pageBlockSection>
+                                        </apex:pageblock>
+                                    </apex:outputPanel>
+                                    <apex:outputPanel >
+                                        <!-- added status when any action performed -->
+                                        <apex:actionstatus id="Status2-1">
+                                            <apex:facet name="start">
+                                                <div class="waitingSearchDiv" id="el_loading" style="background-color: #fbfbfb;
+                                                       height: 100%;opacity:0.65;width:100%;"> 
+                                                    <div class="waitingHolder" style="top: 40%; width: 500px;left:30%;position:fixed;height: 500px;">
+                                                        <img class="waitingImage" src="{!URLFOR($resource.SLDS080,'/assets/images/spinners/slds_spinner_brand.gif')}" title="Please Wait..." />
+                                                        <span class="waitingDescription">Please Wait...</span>
+                                                    </div>
+                                                </div>
+                                            </apex:facet>
+                                        </apex:actionstatus>
+                                    </apex:outputpanel>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="sendFeedbackBack" class="slds-modal-backdrop slds-modal-backdrop--close"></div>
+                </div>
+                 
+                        <div>
+                            <div id="varifysettingPopup" aria-hidden="false" role="dialog" class="slds-modal">
+                                <div class="slds-modal__container">
+                                    <div class="slds-modal__header">
+                                        <h2 class="slds-text-heading--medium">License Info </h2>
+                                        <button class="slds-button slds-modal__close" onclick="hideVarifySettingPopop();return false;">
+                                            <svg aria-hidden="true" class="slds-button__icon slds-button__icon--inverse slds-button__icon--large">
+                                                <use xlink:href="{!URLFOR($resource.SLDS080,'/assets/icons/action-sprite/svg/symbols.svg#close')}"></use>
+                                            </svg>
+                                        <span class="slds-assistive-text">Close</span>
+                                        </button>
+                                    </div>
+                                    <div class="slds-modal__content">
+                                        <div>
+                                            <apex:outputPanel id="popup3">
+                                                <apex:pageblock mode="edit" >
+                                                    
+                                                    <div class="slds-notify slds-notify--alert slds-theme--alert-texture" role="alert">
+                                                          <span class="slds-assistive-text">Info</span>
+                                                          <!--button class="slds-button close slds-icon--small">
+                                                            <svg aria-hidden="true" class="slds-button__icon slds-button__icon--inverse">
+                                                              <use xlink:href="/assets/icons/action-sprite/svg/symbols.svg#close"></use>
+                                                            </svg>
+                                                            <span class="slds-assistive-text">Close</span>
+                                                          </button-->
+                                                          <h2>
+                                                            <!--svg aria-hidden="true" class="slds-icon icon-text-email slds-icon--small slds-m-right--x-small">
+                                                              <use xlink:href="/assets/icons/action-sprite/svg/symbols.svg#email"></use>
+                                                            </svg-->
+                                                            <apex:outputPanel id="popupkeymgs">{!if(AND(!IsNull(pagemessage),!ISBLANK(TRIM(JSENCODE(pagemessage)))),JSENCODE(pagemessage),if(LicenceInfoStatus = true,'Full Paid license in place.','To upgrade to a paid version of Simple Signature, please email sales@toafinish.com.  Once you receive an upgrade key, please enter it here.'))}</apex:outputPanel></h2>
+                                                    </div><br/>
+                                                    <Apex:pageBlockSection columns="1" id="licKey">
+                                                        <apex:pageblocksectionItem rendered="{!!LicenceInfoStatus}">
+                                                            <apex:outputLabel >Key</apex:outputLabel>
+                                                            <apex:inputText value="{!LicenseKey}" html-placeholder="Enter License Key" styleClass="slds-input"/>
+                                                        </apex:pageblocksectionItem>
+                                                    </Apex:pageBlockSection>
+                                                    <center><br/>
+                                                        <apex:outputPanel id="popupbtn">
+                                                            <input type="button" value=" OK " class="slds-button slds-button--neutral" onclick="hideVarifySettingPopop();" style="display:{!if(LicenceInfoStatus,'display','none')};"/>
+                                                            <input type="button" value=" OK " class="slds-button slds-button--neutral" onclick="UnLicencedOK(false);" style="display:{!if(!LicenceInfoStatus,'display','none')};"/>
+                                                            &nbsp;&nbsp;
+                                                            <input type="button" value=" Cancel " class="slds-button slds-button--neutral" onclick="hideVarifySettingPopop();" style="display:{!if(!LicenceInfoStatus,'display','none')};"/>
+                                                    
+                                                        </apex:outputPanel>
+                                                    </center>            
+                                                </apex:pageblock>
+                                            </apex:outputPanel>
+                                                           
+                                            <!-- added status when any action performed -->
+                                            <apex:outputpanel >
+                                                <apex:actionstatus id="Status1">
+                                                    <apex:facet name="start">
+                                                        <div class="waitingSearchDiv" id="el_loading" style="background-color: #fbfbfb;
+                                                               height: 100%;opacity:0.65;width:100%;"> 
+                                                            <div class="waitingHolder" style="top: 40%; width: 500px;left:30%;position:fixed;height: 500px;">
+                                                                <img class="waitingImage" src="{!URLFOR($resource.SLDS080,'/assets/images/spinners/slds_spinner_brand.gif')}" title="Please Wait..." />
+                                                                <span class="waitingDescription">Please Wait...</span>
+                                                            </div>
+                                                        </div>
+                                                    </apex:facet>
+                                                </apex:actionstatus>
+                                            </apex:outputpanel>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="varifysettingPopupback" class="slds-modal-backdrop"></div>
+                        </div>
+                   <!-- </apex:form>--><br/><br/>
+                   <footer role="contentinfo" class="slds-p-around--large" id="ftr" style="width:80%;padding:0px;">
+                    <table width="100%" style="height:75px;">
+                        <tr>
+                            <td width="173" style="vertical-align:bottom;">
+                                <div style="/*position: absolute;*/bottom: 2px;">
+                                     <a href="http://toafinish.com/#footer" target="_BLANK" title="ToAfinish" rel="home" id="footer-logo">
+                                        <!--  <img src="https://ustudio.com/sites/all/themes/ustudio/images/logo-white.png" style="margin-bottom:10px" alt="Home"/> -->
+                                        <apex:image value="{!$Resource.signature__TAFlogo}" alt="TAF Logo" style="margin-bottom:8px"/>
+                                    </a>                
+                                </div>
+                            </td>
+                            <td style="vertical-align:bottom;">
+                               <!-- <div style="/*position: absolute;bottom: -1px;margin-left: 154px;*/ font-size: 13px;">
+                                    <p style="text-align:justify;"><a href="http://toafinish.com/#footer" target="_BLANK">Contact us</a> if you have any questions.<br/>
+                                    Click here for the latest <a href="http://toafinish.com/download/TAF-HighlighterDocumentation.pdf" target="_BLANK">Implementation Guide</a>.</p>
+                                 </div>-->
+                            </td>
+                            <td style="vertical-align:bottom;">
+                                <div style="float: right;/*position: absolute;*/bottom: 4px;right: 0px;">
+                                            <a href="https://www.facebook.com/toafinish" target="_blank"><apex:image url="{!URLFOR($Resource.signature__social_media_icons, '/social_media_icons/facebook.png')}" alt="ToAfinish Facebook Page"/></a>&nbsp;&nbsp;
+                                            <a href="https://twitter.com/toafinish" target="_blank" ><apex:image url="{!URLFOR($Resource.signature__social_media_icons, '/social_media_icons/twitter.png')}" alt="ToAfinish Twitter Profile"/></a>&nbsp;&nbsp;
+                                             <a href="https://www.linkedin.com/company/to-a-finish" target="_blank" ><apex:image url="{!URLFOR($Resource.signature__social_media_icons, '/social_media_icons/linkedin.png')}" alt="ToAfinish LinkedIn Profile"/></a>&nbsp;&nbsp;                     
+                                             <a href="https://plus.google.com/+ToAFinishLLCAustin" target="_blank" ><apex:image url="{!URLFOR($Resource.signature__social_media_icons, '/social_media_icons/google.png')}" alt="ToAfinish Google Plus Page"/></a>&nbsp;&nbsp;
+                                             <a href="https://github.com/ToAFinish" target="_blank" > <apex:image url="{!URLFOR($Resource.signature__social_media_icons, '/social_media_icons/github.png')}" alt="ToAfinish youtube Page"/></a>&nbsp;&nbsp;
+                                             <a href="https://www.youtube.com/user/ToAFinish" target="_blank" ><apex:image url="{!URLFOR($Resource.signature__social_media_icons, '/social_media_icons/youtube.png')}" alt="ToAfinish github page"/></a>&nbsp;&nbsp;                     
+                                   <br/><div align="center">©2012-2016 To A Finish LLC.</div>            
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+               </footer></apex:form> 
+            </div>
+        </body>
+    </html>
+</apex:page>

@@ -1,0 +1,64 @@
+<apex:page controller="signature.ReportPDFController" renderAs="pdf" action="{!getSignature}">  <!--  --> 
+  <apex:form >
+      <apex:variable value="{!1}" var="listsize"/>
+      <apex:variable value="{!0}" var="didsomething"/>
+      <table width= "100%">
+          <apex:repeat value="{!signList}" var="s">
+               <apex:variable value="{!0}" var="didsomething"/>
+               <apex:outputPanel rendered="{!includeLegalText}">
+                   <tr width="100%">
+                        <th><apex:outputText value="{!$Label.signature__Page_Title}"  rendered="{!includeLegalText}" /></th>
+                   </tr>
+                   <br/>
+                   <tr width="100%">
+                        <td width="100%">
+                            <p ><apex:outputText value="{!s.signature__Legal_Text__c}" rendered="{!includeLegalText}"/></p>
+                        </td>
+                   </tr>
+                   <br/>
+                    <apex:repeat value="{!$ObjectType.signature__Signature__c.fieldsets.signature__SignatureFields}" var="fieldValue" id="fset" rendered="{!includeFields}">
+                        <apex:variable value="{!1}" var="didsomething" />
+                        
+                        <tr width="100%">
+                            <td width="20%">
+                                <apex:outputLabel rendered="{!fieldValue.label != 'Name 2'}">{!fieldValue.label}:</apex:outputLabel>
+                                <apex:outputLabel rendered="{!fieldValue.label == 'Name 2'}">Last Name:</apex:outputLabel>  
+                            </td>
+                            <td width="20%"></td>
+                            <td width="60%"><apex:outputField value="{!s[fieldValue]}"/></td>
+                            <td>&nbsp;</td><td >&nbsp;</td>
+                        </tr>
+                    </apex:repeat>      
+                    <br/>
+                    <tr width="100%">
+                        <td width="30%">
+                            <apex:image url="/servlet/servlet.FileDownload?file={!idNsignMap[s.id]}" rendered="{!idNsignMap[s.id] != '' && includeFields}" style="width: 350px;height: 200px;"/>  <!-- width="250" style="max-width: 350px;max-height: 250px;" -->
+                        </td>
+                        <td width="70%"></td>
+                    </tr>
+                </apex:outputPanel>
+                <apex:repeat value="{!fItemMap[s.id]}" var="feed" rendered="{!includeChatter || includeImages}">
+                    <tr width="100%">
+                        <td>
+                            <apex:outputPanel rendered="{!includeChatter}">
+                                <apex:outputText value="{!feed.body}" escape="false" rendered="{!includeChatter}">
+                                    <apex:variable value="{!1}" var="didsomething" />
+                                </apex:outputText>
+                                <br />
+                            </apex:outputPanel>
+                            <apex:image url="/sfc/servlet.shepherd/version/renditionDownload?rendition=THUMB720BY480&versionId={!feed.RelatedRecordId}&operationContext=CHATTER" rendered="{!feed.RelatedRecordId != null && includeImages}" width="{!imageCSS}"> 
+                                <apex:variable value="{!1}" var="didsomething" />
+                            </apex:image>
+                        </td>
+                    </tr>
+                </apex:repeat>
+               
+                <apex:variable value="{!listsize+1}" var="listsize"/>
+                <apex:outputPanel rendered="{!listsize <= signList.size && didsomething = 1}">
+                    <div style="page-break-after: always;"></div> 
+                </apex:outputPanel>
+            </apex:repeat>
+           
+        </table>  
+  </apex:form>
+</apex:page>

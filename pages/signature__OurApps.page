@@ -1,0 +1,237 @@
+<apex:page id="pg" applyBodyTag="false" docType="html-5.0" >
+    <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <head>
+            <apex:stylesheet value="{!URLFOR($Resource.signature__SLDS080, 'assets/styles/salesforce-lightning-design-system-vf.css')}" />
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"/>
+            <style type="text/css">
+               .bPageBlock{
+                        background-color:#fff !important;
+                        border-top:0px !important;
+                        border: 0px !important;
+                }
+                .pbSubheader{ display: -webkit-box;background-color:#F4F6F9 !important;color:#54698d !important;border: 0px !important;}
+                .pbBottomButtons{border-top:0px !important;}
+                .disableBtn{
+                    pointer-events: none;
+                    cursor: default;  
+                    background: linear-gradient(to bottom, #DEDDDD 5%, #DEDDDD 100%) !important;  
+                }
+                .data2Col{border:0px !important;}
+                .colHeadr {text-align:center !important;}
+                .slds td, .slds th{
+                    padding:5px !important;
+                }
+                .divclass{
+                    background:#39576E;
+                    color: #fff !important;
+                    height: 204px;
+                    padding-left:15px;
+                    padding-top:10px;
+                }
+                .tdclass{
+                        width: 291px !important;
+                }
+                .slds-form-element__label{
+                    color:#fff!important;
+                }
+            </style>
+            <script>
+                var j$ = jQuery.noConflict();
+                j$(document).ready(function(){
+                    
+                    j$('#highlighterImageText').hide();
+                    j$('#universalPicklistImageText').hide();
+                    j$('#listImageText').hide();
+                    j$('#avText').hide();
+                    j$('#imText').hide();
+                    j$('#rmText').hide();
+                    <!-- j$('#avfText').hide(); -->
+                });
+                function showMouseOver(imageId,divId){
+                    showAll();
+                    j$('#'+imageId).hide();
+                    j$('#'+divId).show();
+                }
+                function hideMouseOver(imageId,divId){
+                    showAll();
+                    j$('#'+imageId).show();
+                    j$('#'+divId).hide();
+                }
+                function showAll(){
+                    j$('#highlighterImageText').hide();
+                    j$('#universalPicklistImageText').hide();
+                    j$('#listImageText').hide();
+                    j$('#avText').hide();
+                    <!--j$('#avfText').hide(); -->
+                    j$('#imText').hide();
+                    j$('#rmText').hide();
+                    j$('#highlighterImage').show();
+                    j$('#universalPicklistImage').show();
+                    j$('#listImage').show();
+                    j$('#av').show();
+                    <!--j$('#avf').show();    -->
+                    j$('#im').show();
+                    j$('#rm').show();    
+                }
+            </script>
+            <script>
+                var j$ = jQuery.noConflict();
+                j$(document).ready(function() {
+                    
+                    if ( (typeof window.sforce != 'undefined') && (window.sforce!=null) ) {
+                        var ftr = document.getElementById('ftr');
+                        ftr.style.bottom ='0';
+                        ftr.style.right='0';
+                    }
+                    else{
+                        var ftr = document.getElementById('ftr');
+                        ftr.style.position ='absolute';
+                        ftr.style.bottom ='0';
+                        ftr.style.right='0';
+                        
+                    }
+                });
+            </script>
+        </head>
+        <body>
+            <div class="slds">
+                <div class="slds-page-header" role="banner">
+                    <div class="slds-grid">
+                        <div class="slds-col slds-has-flexi-truncate">
+                            <apex:sectionHeader title="" subtitle="Apps by To A Finish"/>
+                            <apex:image url="{!$Resource.signature__TAFlogo}" style="position:absolute;top:10px;right:10px;"/>
+                            <div class="slds-grid">
+                            <div class="slds-grid slds-type-focus slds-no-space">
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+                <apex:form styleClass="slds-form">
+                
+                    <table class="slds-table" cellspacing="5" style="width: 873px;">
+                        <tr>
+                            <td class="tdclass">
+                                <img onclick="window.open('https://appexchange.salesforce.com/listingDetail?listingId=a0N30000000q4OxEAI','__BLANK');" id="highlighterImage" src="https://appexchange.salesforce.com/servlet/servlet.FileDownload?file=00P3000000P3Uv3EAF"  onmouseover="showMouseOver('highlighterImage','highlighterImageText');" />
+                                <div onclick="window.open('https://appexchange.salesforce.com/listingDetail?listingId=a0N30000000q4OxEAI','__BLANK');" class="divclass" id="highlighterImageText" style="width: 280px;white-space: normal;" onmouseout="hideMouseOver('highlighterImage','highlighterImageText');">
+                                    <span class="slds-form-element__label">
+                                        Highlighter
+                                    </span><br/><br/>
+                                    <span class="slds-form-element__label">
+                                        Highlight virtually any field or button on a page. As well, dynamically rename, hide or disable buttons on your page layout.  
+                                        Use your imagination and mold the Salesforce.com UI to your process!
+                                    </span><br/>
+                                </div>
+                            </td>
+                            <td class="tdclass">
+                                
+                                <img onclick="window.open('https://appexchange.salesforce.com/listingDetail?listingId=a0N30000000pvmXEAQ','__BLANK');" id="universalPicklistImage" src="https://appexchange.salesforce.com/servlet/servlet.FileDownload?file=00P3000000P3SySEAV" onmouseover="showMouseOver('universalPicklistImage','universalPicklistImageText');"/>
+                                
+                                    <div onclick="window.open('https://appexchange.salesforce.com/listingDetail?listingId=a0N30000000pvmXEAQ','__BLANK');" class="divclass" id="universalPicklistImageText" style="width: 280px;white-space: normal;" onmouseout="hideMouseOver('universalPicklistImage','universalPicklistImageText');">
+                                        <span class="slds-form-element__label">
+                                            Universal Picklists
+                                        </span><br/><br/>
+                                        <span class="slds-form-element__label">
+                                            Sometimes you have the same picklist in several different objects, the Industry or Lead Source fields, for example. Administrators have historically been forced to manage these lists in separate places. No longer.  Presenting: Universal Picklists!
+                                        </span>
+                                        <br/>
+                                    </div>
+                                
+                            </td>
+                            <td class="tdclass">
+                                <img onclick="window.open('https://appexchange.salesforce.com/listingDetail?listingId=a0N3000000B3fiZEAR','__BLANK');" id="listImage" src="https://appexchange.salesforce.com/servlet/servlet.FileDownload?file=00P3000000P3UfZEAV" onmouseover="showMouseOver('listImage','listImageText');"/>
+                                <div onclick="window.open('https://appexchange.salesforce.com/listingDetail?listingId=a0N3000000B3fiZEAR','__BLANK');" class="divclass" id="listImageText" style="width: 280px;white-space: normal;" onmouseout="hideMouseOver('listImage','listImageText');">
+                                    <span class="slds-form-element__label">
+                                        List Browse
+                                    </span><br/><br/>
+                                    <span class="slds-form-element__label">
+                                        List Browse FREE provides a natural way to intuitively browse your data.  Stop the list clicking madness.  Review your data as easily as looking at a magazine.
+                                    </span>
+                                    <br/>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tdclass">
+                                <img onclick="window.open('https://appexchange.salesforce.com/listingDetail?listingId=a0N300000059eEUEAY','__BLANK');" id="av" src="https://appexchange.salesforce.com/servlet/servlet.FileDownload?file=00P3000000P3PtVEAV" onmouseover="showMouseOver('av','avText');"/>
+                                <div onclick="window.open('https://appexchange.salesforce.com/listingDetail?listingId=a0N300000059eEUEAY','__BLANK');" class="divclass" id="avText" style="width: 280px;white-space: normal;" onmouseout="hideMouseOver('av','avText');">
+                                    <span class="slds-form-element__label">
+                                        Address Verification
+                                    </span><br/><br/>
+                                    <span class="slds-form-element__label">
+                                        Uses SmartyStreets.com Address Cleansing to verify addresses within Salesforce CRM and Force.com systems.  Click, and all addresses on the current record are verified, geocoded and cleansed.  Works with standard and custom objects. (U.S. Addresses only.)
+                                    </span>
+                                    <br/>
+                                </div>
+                            </td>
+                            <!--
+                            <td class="tdclass">
+                                <img onclick="window.open('https://appexchange.salesforce.com/listingDetail?listingId=a0N30000000pvmSEAQ','__BLANK');" id="avf" src="https://appexchange.salesforce.com/servlet/servlet.FileDownload?file=00P3000000P4VWfEAN" onmouseover="showMouseOver('avf','avfText');"/>
+                                <div onclick="window.open('https://appexchange.salesforce.com/listingDetail?listingId=a0N30000000pvmSEAQ','__BLANK');" class="divclass" id="avfText" style="width: 280px;white-space: normal;" onmouseout="hideMouseOver('avf','avfText');">
+                                    <span class="slds-form-element__label">
+                                        Address Verification FREE
+                                    </span><br/><br/>
+                                    <span class="slds-form-element__label">
+                                        Uses SmartyStreets.com Address Cleansing to verify addresses within Salesforce CRM and Force.com systems.  Click, and all addresses on the current record are verified, geocoded and cleansed.  Works with standard objects. (U.S. Addresses only.)
+                                    </span>
+                                    <br/>
+                                </div>
+                            </td>
+                            <td class="tdclass"></td> 
+                            -->
+                            <td class="tdclass">
+                                <img id="im" src="https://appexchange.salesforce.com/servlet/servlet.FileDownload?file=00P3000000Rdu4EEAR" onmouseover="showMouseOver('im','imText');"/>
+                                <div class="divclass" id="imText" style="width: 280px;white-space: normal;" onmouseout="hideMouseOver('im','imText');">
+                                    <span class="slds-form-element__label">
+                                        iMapper
+                                    </span><br/><br/>
+                                    <span class="slds-form-element__label">
+                                        Coming soon...
+                                    </span>
+                                    <br/>
+                                </div>
+                            </td>
+                            <td class="tdclass">
+                                <img id="rm" src="https://appexchange.salesforce.com/servlet/servlet.FileDownload?file=00P3000000QD5uDEAT" onmouseover="showMouseOver('rm','rmText');"/>
+                                <div class="divclass" id="rmText" style="width: 280px;white-space: normal;" onmouseout="hideMouseOver('rm','rmText');">
+                                    <span class="slds-form-element__label">
+                                        Route Manager
+                                    </span><br/><br/>
+                                    <span class="slds-form-element__label">
+                                        Coming soon...
+                                    </span>
+                                    <br/>
+                                </div>
+                            </td>
+                        </tr>
+                    </table><br/><br/>
+                    <p style="font-size:12pt;">
+                        The goal of all the products we sell, or resell, is that they offer excellent service and functionality in the Salesforce environment. In particular, the products we build are intended to be market leaders in ease of use, functionality and bug-free usage. Our products are made with a goal of service to the end user in mind. Apps that are To A Finish™
+                   </p>
+                    
+                </apex:form>
+
+                <div class="slds-grid slds-grid--align-spread" id="footerdiv" style="font-size:12px;font-size:12px;bottom: 0;"> 
+                    <p class="slds-col" style="padding:5px;margin-left:10px;margin-top:15px;">
+                         <a href="http://toafinish.com/#footer" target="_BLANK" title="ToAfinish" rel="home" id="footer-logo">
+                            <!--  <img src="https://ustudio.com/sites/all/themes/ustudio/images/logo-white.png" style="margin-bottom:10px" alt="Home"/> -->
+                            <apex:image value="{!$Resource.signature__TAFlogo}" alt="TAF Logo" style="margin-bottom:8px"/>
+                        </a>  
+
+                    </p>
+                    <p class="slds-col" style="padding:5px;margin-right:10px;margin-top:25px;">
+                        <a href="https://www.facebook.com/toafinish" target="_blank"><apex:image url="{!URLFOR($Resource.signature__social_media_icons, '/social_media_icons/facebook.png')}" alt="ToAfinish Facebook Page"/></a>&nbsp;&nbsp;
+                        <a href="https://twitter.com/toafinish" target="_blank" ><apex:image url="{!URLFOR($Resource.signature__social_media_icons, '/social_media_icons/twitter.png')}" alt="ToAfinish Twitter Profile"/></a>&nbsp;&nbsp;
+                         <a href="https://www.linkedin.com/company/to-a-finish" target="_blank" ><apex:image url="{!URLFOR($Resource.signature__social_media_icons, '/social_media_icons/linkedin.png')}" alt="ToAfinish LinkedIn Profile"/></a>&nbsp;&nbsp;                     
+                         <a href="https://plus.google.com/+ToAFinishLLCAustin" target="_blank" ><apex:image url="{!URLFOR($Resource.signature__social_media_icons, '/social_media_icons/google.png')}" alt="ToAfinish Google Plus Page"/></a>&nbsp;&nbsp;
+                         <a href="https://github.com/ToAFinish" target="_blank" > <apex:image url="{!URLFOR($Resource.signature__social_media_icons, '/social_media_icons/github.png')}" alt="ToAfinish youtube Page"/></a>&nbsp;&nbsp;
+                         <a href="https://www.youtube.com/user/ToAFinish" target="_blank" ><apex:image url="{!URLFOR($Resource.signature__social_media_icons, '/social_media_icons/youtube.png')}" alt="ToAfinish github page"/></a>&nbsp;&nbsp; 
+                        <br/>
+                        <br/> ©2012-2016 To A Finish LLC.
+                    </p>
+                </div>                   
+            </div>
+        </body>
+    </html>
+</apex:page>

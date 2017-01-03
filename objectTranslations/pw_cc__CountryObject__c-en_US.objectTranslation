@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- Allow only listed States --></label>
+        <name>pw_cc__AllowOnlyListedStates__c</name>
+    </fields>
+    <fields>
+        <label><!-- Continent --></label>
+        <name>pw_cc__Continent__c</name>
+    </fields>
+    <fields>
+        <help><!-- Determines whether the field appears as a completion-item on menus --></help>
+        <label><!-- Visible --></label>
+        <name>pw_cc__Enabled__c</name>
+    </fields>
+    <fields>
+        <label><!-- Geolocation --></label>
+        <name>pw_cc__Geolocation__c</name>
+    </fields>
+    <fields>
+        <label><!-- IsDeleted --></label>
+        <name>pw_cc__IsDeleted__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Obsolete --></label>
+        <name>pw_cc__IsObsolete__c</name>
+    </fields>
+    <fields>
+        <label><!-- State is Mandatory --></label>
+        <name>pw_cc__IsStateMandatory__c</name>
+    </fields>
+    <fields>
+        <label><!-- ZIP Code is mandatory --></label>
+        <name>pw_cc__IsZipCodeMandatory__c</name>
+    </fields>
+    <fields>
+        <label><!-- ISO 3166-2 Code --></label>
+        <name>pw_cc__IsoCode_2__c</name>
+    </fields>
+    <fields>
+        <label><!-- ISO 3166-3 Code --></label>
+        <name>pw_cc__IsoCode_3__c</name>
+    </fields>
+    <fields>
+        <label><!-- Phone Code --></label>
+        <name>pw_cc__PhoneCode__c</name>
+    </fields>
+    <fields>
+        <help><!-- The Time Zone for countries which span only a single Time Zone --></help>
+        <label><!-- Time Zone --></label>
+        <name>pw_cc__TimeZone__c</name>
+        <relationshipLabel><!-- Countries --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Trimmed Name --></label>
+        <name>pw_cc__TrimmedName__c</name>
+    </fields>
+    <fields>
+        <help><!-- When enabled the State field is completed with the state ISO Code value.  Otherwise the state Name value is used. --></help>
+        <label><!-- Use Subcountry Code in State field --></label>
+        <name>pw_cc__UseStateCode__c</name>
+    </fields>
+    <fields>
+        <label><!-- Validate ZIP Code --></label>
+        <name>pw_cc__ValidateZipCode__c</name>
+    </fields>
+    <fields>
+        <label><!-- ZIP Code pattern fail message --></label>
+        <name>pw_cc__ZipCodeFailMessage__c</name>
+    </fields>
+    <fields>
+        <label><!-- ZIP Code Regular Expression --></label>
+        <name>pw_cc__ZipCodeRegExp__c</name>
+    </fields>
+</CustomObjectTranslation>

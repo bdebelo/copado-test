@@ -1,0 +1,146 @@
+<apex:component >
+      <meta charset="utf-8"/>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+      <meta name="description" content=""/>
+      <meta name="viewport" content="width=device-width, initial-scale=1" user-scaleable="no"/>
+        
+      <apex:stylesheet value="{!URLFOR($Resource.EEC_Bootstrap, 'EEC_Bootstrap/css/jquery-ui.css')}"/>
+      <apex:stylesheet value="{!URLFOR($Resource.EEC_Bootstrap, 'EEC_Bootstrap/css/main.css')}"/>
+      <apex:stylesheet value="{!URLFOR($Resource.EEC_Bootstrap, 'EEC_Bootstrap/css/font-awesome.css')}"/>
+      <apex:stylesheet value="{!URLFOR($Resource.EEC_Bootstrap, 'EEC_Bootstrap/css/bootstrap.css')}"/>
+      <apex:stylesheet value="{!URLFOR($Resource.EEC_Bootstrap, 'EEC_Bootstrap/bootstrap-fileinput/css/fileinput.min.css')}"/>
+      <apex:stylesheet value="{!URLFOR($Resource.AngularAssets, 'AngularAssets/css/lib/angular-material.min.css')}" />
+      <apex:stylesheet value="{!URLFOR($Resource.AngularAssets, 'AngularAssets/css/app.css')}" />
+      <apex:stylesheet value="{!URLFOR($Resource.AngularAssets, 'AngularAssets/css/eecWizard.css')}" />
+      <link rel="stylesheet" href="//fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic" />
+      <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons" />
+
+      <apex:includeScript value="{!URLFOR($Resource.EEC_Bootstrap, 'EEC_Bootstrap/js/jquery-1.11.2.min.js')}"/>
+      <apex:includeScript value="{!URLFOR($Resource.EEC_Bootstrap, 'EEC_Bootstrap/js/bootstrap.min.js')}"/>
+      <apex:includeScript value="{!URLFOR($Resource.EEC_Bootstrap, 'EEC_Bootstrap/js/plugins.js')}"/>
+      <apex:includeScript value="{!URLFOR($Resource.EEC_Bootstrap, 'EEC_Bootstrap/js/main.js')}"/>
+      <apex:includeScript value="{!URLFOR($Resource.EEC_Bootstrap, 'EEC_Bootstrap/bootstrap-fileinput/js/fileinput.min.js')}"/>
+      <apex:includeScript value="{!URLFOR($Resource.AngularAssets, 'AngularAssets/js/lib/moment.min.js')}"/>
+  
+      <script src='https://www.google.com/recaptcha/api.js'></script>    
+      
+      <style>  
+        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+          visibility: hidden !important;
+        }
+        
+        .transprovider-info-container {
+        margin-bottom: 120px; 
+      }
+        
+      md-input-container {
+        padding-top: 15px; 
+      }
+        
+      md-input-container .input-label {
+        /*top: -50px;*/
+      }
+        
+      md-input-container .input-label-date-picklist {
+        top: -25px;
+      }
+        
+      .base-info {
+        margin-top: 10px; 
+      }
+        
+      .base-info md-content {
+        margin-bottom: 20px; 
+      }
+        
+      .provider-checkbox {
+        margin-top: -25px;
+        margin-left: -5px; 
+        overflow: visible;
+      }
+        
+      .new-address-live-at-address {
+        margin-top: 29px;
+      }
+        
+      /* @see Angular Material - Input */
+      .requiredInput, md-input-container span {
+        -webkit-flex: 1 1 auto;
+        -ms-flex: 1 1 auto;
+        flex: 1 1 auto;
+        -webkit-order: 2;
+        -ms-flex-order: 2;
+        order: 2;
+        display: block;
+        background: 0 0;
+        padding: 2px 2px 1px;
+        border-width: 0 0 1px;
+        line-height: 26px;
+        -ms-flex-preferred-size: 26px;
+        border-radius: 0; 
+      }
+        
+      .other-checkbox {
+         padding-top: 20px;
+      }
+        
+      .commandBtn {
+        -webkit-appearance: none;
+        border: none;
+        box-shadow: none;
+        background: none;
+        text-transform: uppercase;
+        font-weight: 500;
+        font-size: 14px;
+        font-style: inherit;
+        font-variant: inherit;
+        font-family: inherit;
+        outline: none;
+        letter-spacing: .01em;
+        margin: 3px 0px;
+        white-space: normal;
+      }
+        
+      .navigation-buttons .md-button label {
+        white-space: normal;
+      }
+        
+      .base-label {
+        color: rgba(0,0,0,0.54); 
+      }
+        
+      md-input-container input, md-input-container .md-input {
+        max-width: 200px; 
+      }
+        
+      .readonly-input {
+        border-bottom: none;
+        cursor: not-allowed; 
+      }
+      
+      /* TODO: Remove this and use md-select with new Validation. */
+      select {
+        background: none;
+        border: none;
+        border-bottom: 1px solid #ddd; 
+      }
+        
+      .errorMsg {
+        color: red; 
+      }
+        
+      @media only screen and (min-width: 0px) and (max-width: 959px) {
+        .navigation-buttons .md-button {
+          width: 100%;
+        }
+        
+        .navigation-buttons md-content {
+          width: 100%;
+        }
+        
+        md-input-container input {
+          max-width: none;
+        }
+      }
+      </style>
+</apex:component>

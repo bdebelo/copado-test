@@ -1,0 +1,21 @@
+<apex:page controller="BlogLog_Admin_Controller">
+    <apex:form >
+        <apex:pageBlock title="Commands">
+        <p><apex:commandButton value="Update All Feeds" action="{!handleUpdate}" /></p>
+		</apex:pageBlock>
+    </apex:form>
+    
+    <apex:pageBlock title="Notes">
+    	<p>Feeds are defined in the BlogLog_Config class.  You need to add them to 
+            remote site settings.</p>
+        <p>You can schedule this to happen automatically using something like:</p>
+            <pre>
+BlogLog_Retrieve r = new BlogLog_Retrieve();
+String sch = '0 0 0 ? * *';
+system.schedule('BlogLog - Retrieve 1', sch, r);
+</pre>
+	
+    </apex:pageBlock>
+    
+    
+</apex:page>

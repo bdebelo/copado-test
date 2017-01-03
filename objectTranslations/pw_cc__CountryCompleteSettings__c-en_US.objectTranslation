@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- Alert Email --></label>
+        <name>pw_cc__AlertEmail__c</name>
+    </fields>
+    <fields>
+        <label><!-- CountryComplete Enabled --></label>
+        <name>pw_cc__CountryCompleteEnabled__c</name>
+    </fields>
+    <fields>
+        <label><!-- Disable Account Trigger --></label>
+        <name>pw_cc__DisableAccountTrigger__c</name>
+    </fields>
+    <fields>
+        <label><!-- Disable Contact Trigger --></label>
+        <name>pw_cc__DisableContactTrigger__c</name>
+    </fields>
+    <fields>
+        <label><!-- Disable Contract Trigger --></label>
+        <name>pw_cc__DisableContractTrigger__c</name>
+    </fields>
+    <fields>
+        <label><!-- Disable Lead Trigger --></label>
+        <name>pw_cc__DisableLeadTrigger__c</name>
+    </fields>
+    <fields>
+        <help><!-- URLs of pages should be separated by a semicolon and a space --></help>
+        <label><!-- Disabled Pages --></label>
+        <name>pw_cc__DisabledPages__c</name>
+    </fields>
+    <fields>
+        <label><!-- Only operate when changed --></label>
+        <name>pw_cc__OnlyOperateWhenChanged__c</name>
+    </fields>
+    <fields>
+        <label><!-- QuickComplete Country Enabled --></label>
+        <name>pw_cc__QuickCompleteCountryEnabled__c</name>
+    </fields>
+    <fields>
+        <label><!-- Run trigger once --></label>
+        <name>pw_cc__RunOnce__c</name>
+    </fields>
+    <fields>
+        <label><!-- Standardization Enabled --></label>
+        <name>pw_cc__StandardizationEnabled__c</name>
+    </fields>
+    <fields>
+        <help><!-- 0 - store as &quot;Name&quot;
+1 - store as &quot;ISO 2-letter code&quot;
+2 - store as &quot;ISO 3-letter code&quot; --></help>
+        <label><!-- Store country value as --></label>
+        <name>pw_cc__StoreCountryValueAs__c</name>
+    </fields>
+    <fields>
+        <label><!-- ZIP Code Lookup Enabled --></label>
+        <name>pw_cc__ZipCodeLookupEnabled__c</name>
+    </fields>
+</CustomObjectTranslation>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contactEmail>bdebelo@incapsulate.com</contactEmail>
+    <contactPhone>9148856218</contactPhone>
+    <label>IDM Drupal Site</label>
+    <oauthConfig>
+        <callbackUrl>https://50.79.14.216/salesforce/oauth_callback</callbackUrl>
+        <consumerKey>3MVG9fMtCkV6eLhcok0RClNQ5DBXFg7cOH1Z_yrfqO25BpoLeJY580SN.BIWf20G8zqVBP81Ibk4girtardZp</consumerKey>
+        <scopes>Basic</scopes>
+        <scopes>Api</scopes>
+        <scopes>Web</scopes>
+        <scopes>Full</scopes>
+        <scopes>Chatter</scopes>
+        <scopes>CustomApplications</scopes>
+        <scopes>RefreshToken</scopes>
+        <scopes>OpenID</scopes>
+        <scopes>CustomPermissions</scopes>
+    </oauthConfig>
+</ConnectedApp>

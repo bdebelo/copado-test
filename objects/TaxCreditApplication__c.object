@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>false</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Adultslivinginyourhousehold__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>PLEASE HAVE THE PRIMARY OWNER FILL OUT THESE QUESTIONS</inlineHelpText>
+        <label>Adults living in your household</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ApplicationStatus__c</fullName>
+        <externalId>false</externalId>
+        <label>Application Status</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>New</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Active</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Approved</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Rejected</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Approver__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Approver</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Tax_Credit_Applications1</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>ApproversName__c</fullName>
+        <externalId>false</externalId>
+        <formula>Approver__r.FirstName + &apos; &apos; + Approver__r.LastName</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Approver&apos;s Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Block__c</fullName>
+        <externalId>false</externalId>
+        <label>Block</label>
+        <length>20</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Childreninkindergartenorelementarys__c</fullName>
+        <description>Children in kindergarten or elementary school (1st Grade to 5th Grade):</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Children in kindergarten or elementary school (1st Grade to 5th Grade):</inlineHelpText>
+        <label>Children in kindergarten or elementary</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Childrenpreschoolagebelow__c</fullName>
+        <externalId>false</externalId>
+        <label>Children pre-school age &amp; below</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Childrensschoolenrollment__c</fullName>
+        <description>Please select the option that best represents your child’s or children’s school enrollment</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Please select the option that best represents your child’s or children’s school enrollment</inlineHelpText>
+        <label>Children’s school enrollment</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>In public school and will stay in public school after this change of residence</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>In private school and will stay in private school after this change of residence</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Transitioning from public school to private school with this change of residence</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Transitioning from private school to public school with this change of residence</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Some children in public school and some in private school regardless of change of residence</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>ContractAmount__c</fullName>
+        <externalId>false</externalId>
+        <label>Contract Amount</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ContractDate__c</fullName>
+        <externalId>false</externalId>
+        <label>Contract Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Lot__c</fullName>
+        <externalId>false</externalId>
+        <label>Lot</label>
+        <length>20</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Other_Employment_Status__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>If you selected other for employment status please fill this out</inlineHelpText>
+        <label>Other</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Primaryreasonsformoving__c</fullName>
+        <description>The new location has the following advantages: (Select up to three choices)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The new location has the following advantages: (Select up to three choices)</inlineHelpText>
+        <label>Primary reasons for moving</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Lower crime rate</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Higher quality public school</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Better lot/yard size</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Closer to family/friends</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Closer to a public park</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Closer to a shopping area</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Shorter commute to work</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>No advantage, the move is involuntary</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Easier to pursue an education</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>SalesAmount__c</fullName>
+        <externalId>false</externalId>
+        <label>Sales Amount</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Section__c</fullName>
+        <externalId>false</externalId>
+        <label>Section</label>
+        <length>20</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SubmittedBy__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Submitted By</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Tax_Credit_Applications</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Ward__c</fullName>
+        <externalId>false</externalId>
+        <label>Ward</label>
+        <length>20</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Whatisyourcurrentemploymentstatus__c</fullName>
+        <externalId>false</externalId>
+        <label>What is your current employment status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Employed</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Looking for Work</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Retired</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Student</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Homemaker</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Unemployed</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Whatisyourgender__c</fullName>
+        <externalId>false</externalId>
+        <label>What is your gender</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Male</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Female</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Refused</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Whatisyourmaritalstatus__c</fullName>
+        <externalId>false</externalId>
+        <label>What is your marital status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Married</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Single (never married)</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Living as married with a partner</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Divorced / Widowed / Separated</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Refused</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <label>Tax Credit Application</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>TC-{0000}</displayFormat>
+        <label>Tax Credit Application Name</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Tax Credit Applications</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>Employment_status_other_description</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(ISPICKVAL( Whatisyourcurrentemploymentstatus__c, &apos;Other&apos;) ,  ISBLANK(Other_Employment_Status__c))</errorConditionFormula>
+        <errorDisplayField>Other_Employment_Status__c</errorDisplayField>
+        <errorMessage>Please add description of your employment status</errorMessage>
+    </validationRules>
+</CustomObject>

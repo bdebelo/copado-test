@@ -1,0 +1,27 @@
+<apex:page controller="reCAPTCHA" standardStylesheets="false" showHeader="false" sidebar="false">
+    <head>
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+      <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+      <script src="https://rawgit.com/davidstutz/bootstrap-multiselect/master/dist/js/bootstrap-multiselect.js"></script>
+	  
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css"/>  
+      <link rel="stlyesheet" href="https://rawgit.com/davidstutz/bootstrap-multiselect/master/dist/css/bootstrap-multiselect.css" /> 
+     
+      <script>
+          j$ = jQuery.noConflict();
+
+          j$(document).ready(function() {
+                j$('#example-filterBehavior').multiselect({
+                    enableFiltering: true,
+                    filterBehavior: 'value'
+                });
+    	  });
+      </script>
+        
+    </head>
+    <body>
+        <apex:form >
+            <apex:commandButton action="{!deleteBlog}" value="DELETE BLOG"/>
+        </apex:form>
+    </body>
+</apex:page>

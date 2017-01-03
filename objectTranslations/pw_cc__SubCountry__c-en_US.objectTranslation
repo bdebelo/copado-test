@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <help><!-- Enter each alternative name with a pipe (&quot; | &quot;) inbetween. --></help>
+        <label><!-- Alternative Names --></label>
+        <name>pw_cc__AlternativeNames__c</name>
+    </fields>
+    <fields>
+        <label><!-- Category --></label>
+        <name>pw_cc__Category__c</name>
+        <picklistValues>
+            <masterLabel>County</masterLabel>
+            <translation><!-- County --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Province</masterLabel>
+            <translation><!-- Province --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>State</masterLabel>
+            <translation><!-- State --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Territory</masterLabel>
+            <translation><!-- Territory --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Country --></label>
+        <name>pw_cc__Country__c</name>
+        <relationshipLabel><!-- States (obsolete) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Full ISO Code --></label>
+        <name>pw_cc__FullIsoCode__c</name>
+    </fields>
+    <fields>
+        <label><!-- ISO Code --></label>
+        <name>pw_cc__IsoCode__c</name>
+    </fields>
+    <fields>
+        <label><!-- Notes --></label>
+        <name>pw_cc__Notes__c</name>
+    </fields>
+    <fields>
+        <label><!-- Parent Country ISO Code --></label>
+        <name>pw_cc__ParentCountryIsoCode__c</name>
+    </fields>
+    <fields>
+        <label><!-- Regional Division --></label>
+        <name>pw_cc__RegionalDivision__c</name>
+    </fields>
+    <fields>
+        <label><!-- Trimmed Name --></label>
+        <name>pw_cc__TrimmedName__c</name>
+    </fields>
+</CustomObjectTranslation>
